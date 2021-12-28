@@ -5,7 +5,7 @@ import { useParams, useNavigate } from "react-router-dom"
 
 
 export const RecipeDetail = () => {
-  const { getRecipeById, releaseRecipe } = useContext(RecipeContext)
+  const { getRecipeById, removeRecipe } = useContext(RecipeContext)
 
 	const [recipe, setRecipe] = useState({})
 
@@ -23,7 +23,7 @@ export const RecipeDetail = () => {
     // const history = useHistory()
 
 const handleRelease = () => {
-    releaseRecipe(recipe.id)
+    removeRecipe(recipe.id)
       .then(() => {
         navigate("/recipes")
       })

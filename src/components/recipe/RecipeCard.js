@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 export const RecipeCard = ({ recipe }) =>  {
 
 return (
-    <section className="recipeCard">
-        <h2 className="event__name">
+    <section className="recipe">
+        <h2 className="recipe__name">
             <Link to={`/recipes/detail/${recipe.id}`}>
                 {recipe.recipeName}
             </Link>

@@ -29,6 +29,13 @@ export const RecipeProvider = (props) => {
             .then(res => res.json())
     }
 
+    const removeRecipe = recipeId => {
+        return fetch(`http://localhost:8088/recipes/${recipeId}`, {
+            method: "DELETE"
+        })
+            .then(getRecipes)
+      }
+
     const updateRecipe = eventObj => {
         return fetch(`http://localhost:8088/recipes/${eventObj.id}`, {
           method: "PUT",
@@ -42,7 +49,7 @@ export const RecipeProvider = (props) => {
 
     return (
         <RecipeContext.Provider value={{
-            recipes, getRecipes, addRecipe, updateRecipe,getRecipeById, searchTerms, setSearchTerms
+            recipes, getRecipes, addRecipe, updateRecipe,getRecipeById, searchTerms, setSearchTerms, removeRecipe
         }}>
             {props.children}
         </RecipeContext.Provider>
