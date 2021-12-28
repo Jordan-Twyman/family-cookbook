@@ -6,6 +6,7 @@ export const RecipeContext = createContext()
 // This component establishes what data can be used.
 export const RecipeProvider = (props) => {
     const [recipes, setRecipe] = useState([])
+    const [ searchTerms, setSearchTerms ] = useState("");
 
     const getRecipes = () => {
         return fetch("http://localhost:8088/recipes")
@@ -41,7 +42,7 @@ export const RecipeProvider = (props) => {
 
     return (
         <RecipeContext.Provider value={{
-            recipes, getRecipes, addRecipe, updateRecipe,getRecipeById
+            recipes, getRecipes, addRecipe, updateRecipe,getRecipeById, searchTerms, setSearchTerms
         }}>
             {props.children}
         </RecipeContext.Provider>
