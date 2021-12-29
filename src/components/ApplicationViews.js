@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import React from "react";
-import { RecipeProvider } from "./recipe/RecipeProvider";
-import { RecipeSearch } from "./recipe/RecipeSearch";
-import { RecipeList } from "./recipe/RecipeList";
-import { RecipeDetail } from "./recipe/RecipeDetails";
+import { RecipeProvider } from "./recipes/RecipeProvider";
+import { RecipeSearch } from "./recipes/RecipeSearch";
+import { RecipeList } from "./recipes/RecipeList";
+import { RecipeDetail } from "./recipes/RecipeDetails";
 import { Home } from "./Home";
-import { RecipeForm } from "./recipe/RecipeForm";
+import { RecipeForm } from "./recipes/RecipeForm";
 
 
 
