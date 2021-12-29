@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 
 export const RecipeCard = ({ recipe }) =>  {
 
+    if (recipe.userId === +localStorage.activeUser) {
+
+
 return (
     <section className="recipe">
         <h2 className="recipe__name">
@@ -15,4 +18,6 @@ return (
    
     </section>
     )
-}
+}else {
+    return ("")
+}}
