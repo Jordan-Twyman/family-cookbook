@@ -3,10 +3,12 @@ import { RecipeContext } from "./RecipeProvider"
 import { RecipeCard } from "./RecipeCard"
 import "./Recipe.css"
 import { useNavigate } from "react-router"
+import { IngredientContext } from "../ingredients/IngredientProvider"
+import { RecipeIngredientContext } from "../RecipeIngredientsProvider"
 
 
 
-export const RecipeList = ({ }) => {
+export const RecipeList = ({}) => {
     const { getRecipes, recipes, searchTerms } = useContext(RecipeContext)
     const [ filteredRecipes, setFiltered ] = useState([])
     const navigate = useNavigate()

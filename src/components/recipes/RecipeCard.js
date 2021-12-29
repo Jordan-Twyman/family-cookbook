@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Recipe.css";
 import { Link } from "react-router-dom";
 
-export const RecipeCard = ({ recipe }) =>  {
+export const RecipeCard = ({ recipe, ingredient }) =>  {
 
     if (recipe.userId === +localStorage.activeUser) {
 

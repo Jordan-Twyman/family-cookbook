@@ -9,6 +9,7 @@ import { RecipeForm } from "./recipes/RecipeForm";
 import { IngredientList } from "./ingredients/IngredientList";
 import { IngredientProvider } from "./ingredients/IngredientProvider";
 import { IngredientForm } from "./ingredients/IngredientForm";
+import { RecipeIngredientsProvider } from "./RecipeIngredientsProvider";
 
 
 
@@ -18,6 +19,7 @@ import { IngredientForm } from "./ingredients/IngredientForm";
 export const ApplicationViews = () => {
 
     return (
+        <RecipeIngredientsProvider>
         <IngredientProvider>
         <RecipeProvider>
         <Routes>
@@ -32,5 +34,6 @@ export const ApplicationViews = () => {
         </Routes>
         </RecipeProvider>
         </IngredientProvider>
+        </RecipeIngredientsProvider>
     )
 }
