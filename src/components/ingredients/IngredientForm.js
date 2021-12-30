@@ -30,6 +30,8 @@ export const IngredientForm = () => {
       }
   
       const handleClickSaveEvent = () =>{
+        // const recipeObj = recipes.find(r => r.id ===)
+        // const ingredientObj = ingredients.find(i => i.id === filteredJointObj.ingredientId)
           if (ingredient.ingredientName === "" ){window.alert("No ingredient input")
             }else{
                     setIsLoading(true);
@@ -41,8 +43,7 @@ export const IngredientForm = () => {
                             completed:false
                             
                             })
-                         .then(()=> navigate("/ingredients/"))
-                        //  navigate(`/recipes/detail/${recipe.id}`))
+                        //  .then(()=> navigate(`/recipes/detail/1`))
                     }else{
                         addIngredient({
                             userId:+localStorage.activeUser,
@@ -50,7 +51,9 @@ export const IngredientForm = () => {
                             completed:false
                          
                         })
-                        .then(()=> navigate("/ingredients/"))
+                        // .then(()=> navigate(`/recipes/detail/1`))
+
+                        // .then(()=> navigate("/ingredients/"))
                     }
       }
     }

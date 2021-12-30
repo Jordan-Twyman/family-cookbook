@@ -31,7 +31,7 @@ export const RecipeForm = () => {
       }
   
       const handleClickSaveEvent = () =>{
-          if (recipe.recipeName==="" ||recipe.recipeDetails==="" ||recipe.recipeInstructions==="" ){window.alert("Please complete your recipe")
+          if (recipe.recipeName===""){window.alert("Please complete your recipe title")
             }else{
                     setIsLoading(true);
                     if(recipeId){

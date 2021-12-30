@@ -6,7 +6,8 @@ import { useNavigate } from "react-router"
 
 
 
-export const RecipeList = ({ }) => {
+
+export const RecipeList = ({}) => {
     const { getRecipes, recipes, searchTerms } = useContext(RecipeContext)
     const [ filteredRecipes, setFiltered ] = useState([])
     const navigate = useNavigate()
