@@ -6,21 +6,19 @@ import { RecipeIngredientContext } from "./RecipeIngredientsProvider";
 
 
 export const RecipeIngredientsForm = () => {
-  const { addEmployee, getEmployeeById, updateEmployee } = useContext(EmployeeContext);
-  const { locations, getLocations } = useContext(LocationContext);
-  const { employeeId } = useParams()
+  const { addRecipeIngredient, getRecipeIngredientById } = useContext(RecipeIngredientContext);
+  const { ingredients, getIngredients } = useContext(LocationContext);
+  const { recipeIngredientsId } = useParams()
   /*
   With React, we do not target the DOM with `document.querySelector()`. Instead, our return (render) reacts to state or props.
   Define the intial state of the form inputs with useState()
   */
 
-  const [employee, setEmployee] = useState({
+  const [recipeIngredient, setRecipeIngredient] = useState({
 
-    name: "",
-    locationId: 0,
-    manager:false,
-    fullTime:false,
-    hourlyRate:0    
+    recipeId: 0,
+    ingredientId:false,
+    amount:""    
 });
 
   const navigate = useNavigate();
@@ -30,9 +28,9 @@ export const RecipeIngredientsForm = () => {
   and locations state on initialization.
   */
   useEffect(() => {
-    getLocations().then(() => {
-      if (employeeId) {
-        getEmployeeById(employeeId).then(setEmployee)
+    getIngredients().then(() => {
+      if (recipeIngredientsId) {
+        getRecipeIngredientById(recipeIngredientsId).then(setRecipeIngredient)
       }
     });
   }, []);
@@ -42,51 +40,37 @@ export const RecipeIngredientsForm = () => {
   const handleControlledInputChange = (event) => {
     /* When changing a state object or array,
     always create a copy, make changes, and then set state.*/
-    const newEmployee = { ...employee };
+    const newRecipeIngredient = { ...recipeIngredient };
     /* Animal is an object with properties.
     Set the property to the new value
     using object bracket notation. */
-    newEmployee[event.target.name] = event.target.value;
+    newRecipeIngredient[event.target.name] = event.target.value;
     // update state
-    setEmployee(newEmployee);
+    setRecipeIngredient(newRecipeIngredient);
   }
 
-  const handleControlledInputChangeBool = (event) => {
-    /* When changing a state object or array,
-    always create a copy, make changes, and then set state.*/
-    const newEmployee = { ...employee };
-    /* Animal is an object with properties.
-    Set the property to the new value
-    using object bracket notation. */
-    newEmployee[event.target.id] = event.target.checked;
-    // update state
-    setEmployee(newEmployee);
-  }
 
-  const handleClickSaveEmployee = (event) => {
+
+  const handleClickSaveIngredient = (event) => {
     event.preventDefault(); //Prevents the browser from submitting the form
 
-    const locationId = parseInt(employee.locationId);
-    const hourlyRate = parseInt(employee.hourlyRate);
-    const manager = Boolean(employee.manager)
-    const fullTime = Boolean(employee.fullTime)
-
-    employee.locationId = locationId
-    employee.hourlyRate = hourlyRate
-    employee.manager = manager
-    employee.fullTime = fullTime
+    const recipeId = parseInt(recipeIngredient.recipeId);
+    const ingredientId = parseInt(recipeIngredient.ingredientId);
     
 
-    if (locationId === 0 || hourlyRate === 0) {
+    recipeIngredient.recipeId = recipeId
+    recipeIngredient.ingredientId = ingredientId
+    
+    
+
+    if (recipeId === 0 || ingredientId === 0) {
       window.alert("Please enter complete employee information");
-    } else if (employeeId) {
-      updateEmployee(employee)
-      .then(() => navigate(`/employees/detail/${employeeId}`))
+    
+    //   .then(() => navigate(`/employees/detail/${employeeId}`))
     } else {
-      //invoke addAnimal passing animal as an argument.
-      //once complete, change the url and display the animal list
-      addEmployee(employee)
-      .then(() => navigate("/employees"));
+     
+      addRecipeIngredient(recipeIngredient)
+    //   .then(() => navigate("/employees"));
     }
   }
 
@@ -96,35 +80,15 @@ export const RecipeIngredientsForm = () => {
       <fieldset>
         <div className="form-group">
           <label htmlFor="employeeName">Employee name:</label>
-          <input type="text" id="name" name="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Employee name" defaultValue={employee.name}/>
-        </div>
-      </fieldset>
-      <fieldset>
-        <div className="form-group">
-          <label htmlFor="employeeHours">Full Time:</label>
-          <input type="checkbox" id="fullTime" name="fullTime" checked={employee.fullTime}  onChange={handleControlledInputChangeBool} value={employee.fullTime}
-         unchecked/>
-        </div>
-      </fieldset>
-      <fieldset>
-        <div className="form-group">
-          <label htmlFor="employeePosition">Manager:</label>
-          <input type="checkbox" id="manager" name="manager" checked={employee.manager}  onChange={handleControlledInputChangeBool} defaultValue={employee.manager}
-         unchecked/>
-        </div>
-      </fieldset>
-      <fieldset>
-        <div className="form-group">
-          <label htmlFor="rate">Hourly Rate:</label>
-          <input type="number" id="rate" name="hourlyRate" onChange={handleControlledInputChange} required className="form-control" placeholder="Hourly Rate" value={employee.hourlyRate}/>
+          <input type="text" id="name" name="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Employee name" defaultValue={recipeIngredient.name}/>
         </div>
       </fieldset>
       <fieldset>
         <div className="form-group">
           <label htmlFor="location">Assign to location: </label>
-          <select value={employee.locationId} name="locationId" id="location" className="form-control" onChange={handleControlledInputChange} >
+          <select value={recipeIngredient.ingredientId} name="ingredientId" id="ingredient" className="form-control" onChange={handleControlledInputChange} >
             <option value="0">Select a location</option>
-            {locations.map(l => (
+            {ingredients.map(l => (
               <option key={l.id} value={l.id}>
                 {l.name}
               </option>
@@ -133,8 +97,8 @@ export const RecipeIngredientsForm = () => {
         </div>
       </fieldset>
       <button className="btn btn-primary"
-        onClick={handleClickSaveEmployee}>
-        Save Employee
+        onClick={handleClickSaveIngredient}>
+        Add Ingredient
       </button>
     </form>
   );
