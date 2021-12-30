@@ -47,7 +47,7 @@ const handleRelease = () => {
       <div className="recipe__details">{recipe.recipeDetails}</div>
       <h3 className="recipe__instructionsLabel">Instructions</h3>
       <div className="recipe__instructions">{recipe.recipeInstructions}</div>
-      <h3 className="recipe__ingredientsLabel">Ingredients</h3>
+      <h3 className="recipe__ingredientsnpm Label">Ingredients</h3>
       <div>
                 <ol>
                     {
