@@ -6,7 +6,7 @@ export const IngredientContext = createContext();
 // This component establishes what data can be used.
 export const IngredientProvider = (props) => {
     const [ingredients, setIngredient] = useState([]);
-    // const [ searchTerms, setSearchTerms ] = useState("");
+    const [ searchTerms, setSearchTerms ] = useState("");
 
     const getIngredients = () => {
         return fetch("http://localhost:8088/ingredients")
@@ -60,7 +60,7 @@ export const IngredientProvider = (props) => {
 
     return (
         <IngredientContext.Provider value={{
-            ingredients, getIngredients, addIngredient, updateIngredient, getIngredientById, removeIngredient, completed
+            ingredients, getIngredients, addIngredient, updateIngredient, getIngredientById, removeIngredient, completed, setSearchTerms, searchTerms
         }}>
             {props.children}
         </IngredientContext.Provider>

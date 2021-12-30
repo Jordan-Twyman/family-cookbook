@@ -9,7 +9,9 @@ import { RecipeForm } from "./recipes/RecipeForm";
 import { IngredientList } from "./ingredients/IngredientList";
 import { IngredientProvider } from "./ingredients/IngredientProvider";
 import { IngredientForm } from "./ingredients/IngredientForm";
-import { RecipeIngredientsProvider } from "./RecipeIngredientsProvider";
+import { RecipeIngredientsProvider } from "./recipeingredients/RecipeIngredientsProvider";
+import { RecipeIngredientList } from "./recipeingredients/RecipeIngredientsList";
+import { RecipeIngredientsSearch } from "./recipeingredients/RecipeIngredientsSearch";
 
 
 
@@ -26,7 +28,7 @@ export const ApplicationViews = () => {
             <Route path="/*" element={<Home />} />
             <Route path ="/recipes/*" element={<><RecipeSearch /><RecipeList /></>}/>
             <Route path ="/recipes/create" element={<RecipeForm />}/>
-            <Route path="/recipes/detail/:recipeId/*" element={<RecipeDetail />} />
+            <Route path="/recipes/detail/:recipeId/*" element={<><RecipeDetail /><aside><RecipeIngredientsSearch /> <IngredientForm /> <RecipeIngredientList /></aside></>} />
             <Route path="recipes/edit/:recipeId/*" element={<RecipeForm />} />
             <Route path ="/ingredients/*" element={<IngredientList />}/>
             <Route path ="/ingredients/create" element={<IngredientForm />}/>

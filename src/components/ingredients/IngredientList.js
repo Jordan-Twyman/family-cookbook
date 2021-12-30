@@ -24,9 +24,9 @@ export const IngredientList = () => {
   return (
     <>
       <div className="ingredientsContainer">
-        <h2>Ingredients Needed</h2>
+        <h2>Grocery List</h2>
         <button className="btn btn-secondary add-ingredient-button" onClick={() => navigate("/ingredients/create")}>
-            Add Ingredient
+            Add Item
         </button>
         <div className="ingredients">
             {/* {console.log("TaskList: Render", tasks)} */}

@@ -3,8 +3,7 @@ import { RecipeContext } from "./RecipeProvider"
 import { RecipeCard } from "./RecipeCard"
 import "./Recipe.css"
 import { useNavigate } from "react-router"
-import { IngredientContext } from "../ingredients/IngredientProvider"
-import { RecipeIngredientContext } from "../RecipeIngredientsProvider"
+
 
 
 
