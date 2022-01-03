@@ -3,11 +3,69 @@ import { IngredientForm } from "../ingredients/IngredientForm"
 import { IngredientContext } from "../ingredients/IngredientProvider"
 import { RecipeIngredientCard } from "./RecipeIngredientsCard"
 import { useEffect } from "react"
+import { RecipeContext } from "../recipes/RecipeProvider"
+import { RecipeIngredientContext } from "./RecipeIngredientsProvider"
+import { useNavigate, useParams } from "react-router-dom"
+import "./RecipeIngredients.css"
 
 
 export const RecipeIngredientsSearch = () => {
   const { setSearchTerms, ingredients, searchTerms } = useContext(IngredientContext)
+  const { getRecipeById } = useContext(RecipeContext)
+  const { addRecipeIngredient, getRecipeIngredients } = useContext(RecipeIngredientContext)
   const [ filteredIngredients, setFiltered ] = useState([])
+  const navigate = useNavigate();
+  
+
+  const {recipeId} = useParams();
+
+  useEffect(() => {
+    getRecipeIngredients()
+    // console.log("useEffect", recipeId)
+    .then(() => {
+    getRecipeById(recipeId)
+    .then((response) => {
+      setRecipeIngredient(response)
+    })
+  })}, [])
+
+  const [recipeIngredient, setRecipeIngredient] = useState({
+
+    ingredientId:0,
+    recipeId:0,
+});
+
+
+  const handleControlledInputChange = (event) => {
+    //When changing a state object or array,
+    //always create a copy make changes, and then set state.
+    const newIngredient = { ...recipeIngredient }
+    //animal is an object with properties.
+    //set the property to the new value
+    newIngredient[event.target.id] = event.target.value
+    //update state
+    setRecipeIngredient(newIngredient)
+  }
+
+
+  const handleClickSaveIngredient = () => {
+  
+            //resetting both states
+         
+            addRecipeIngredient({
+              ingredientId:+recipeIngredient.ingredientId,
+              amount:recipeIngredient.amount,
+              recipeId:+recipeId,
+               }
+            )
+            .then(() => {
+
+              setRecipeIngredient({
+                ingredientId:0,
+                amount:""  
+              })
+            })
+           }  //reloading the list with the new list, message edit state set back to 0, message needs to ga back to empty
 
 
   useEffect(() => {
@@ -25,19 +83,61 @@ export const RecipeIngredientsSearch = () => {
   return (
     <>
     <div className="recipe">
-      Ingredient search:
+    <h2 className="recipeIngredientForm__title">Add Ingredients</h2>
+      <div className="searchContainer"> Ingredient search:
       <input type="text"
         className="input--wide"
         onKeyUp={(event) => setSearchTerms(event.target.value)}
-        placeholder="Search ingredient to add... " />
+        placeholder="Search ingredient to add... " /><div className="ingredientList">
         
+
         
         {
             filteredIngredients.map(ingredient => {
                 return <RecipeIngredientCard key={ingredient.id} ingredient={ingredient} />
             })
         }
-        <IngredientForm />
+        </div>
+
+          </div>
+            <form className="recipeIngredientForm">
+      
+      {/* <fieldset>
+        <div className="form-group">
+          <label htmlFor="location">Ingredient Select: </label>
+          <select value={recipeIngredient.ingredientId} name="ingredientId" id="ingredientId" className="form-control" onChange={handleControlledInputChange} >
+            <option value="0">Select a location</option>
+            {ingredients.map( l => (
+              <option key={l.id} value={l.id}>
+                {l.ingredientName}
+              </option>
+            ))}
+          </select>
+        </div>
+      </fieldset> */}
+      <fieldset>
+                <div className="form-group">
+                    <label htmlFor="name">Ingredient:</label>
+                    <input type="text" id="ingredientId" name="ingredientName" onChange={handleControlledInputChange} defaultVaule={e => setSearchTerms(e.target.value)} required autoFocus className="form-control"/>
+                </div>
+            </fieldset>
+            <fieldset>
+        <div className="form-group">
+          <label htmlFor="ingredientAmount">amount:</label>
+          <input type="text" id="amount" name="amount" onChange={handleControlledInputChange} value={recipeIngredient.amount} required autoFocus className="form-control" />
+        </div>
+      </fieldset>
+      <button className="btn btn-primary"
+        onClick={e => {
+          e.preventDefault() 
+          handleClickSaveIngredient()}}>
+        Add Ingredient
+      </button> <button className="btn btn-secondary add-ingredient-button" onClick={() => navigate("/ingredients/create")}>
+            Add New Ingredient
+        </button>
+    </form>
+
+            
     </div>
     </>
   )

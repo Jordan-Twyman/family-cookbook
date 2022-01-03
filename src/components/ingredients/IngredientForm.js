@@ -44,7 +44,7 @@ export const IngredientForm = () => {
                             completed:false
                             
                             })
-                         .then(()=> navigate(`/recipes/detail/${recipe.id}`))
+                        //  .then(()=> navigate(`/recipes/detail/${recipe.id}`))
                         //  .then(()=> navigate(`/recipes/detail/1`))
                     }else{
                         addIngredient({
@@ -53,7 +53,7 @@ export const IngredientForm = () => {
                             completed:false
                          
                         })
-                        .then(()=> navigate(`/recipes/detail/${recipe.id}`))
+                        // .then(()=> navigate(`/recipes/detail/${recipe.id}`))
 
                         // .then(()=> navigate("/ingredients/"))
                     }
@@ -82,7 +82,7 @@ export const IngredientForm = () => {
               onClick={e => {
                   e.preventDefault()
                   handleClickSaveEvent()
-                  e.target.reset();}
+                  }
                   }>
               {ingredientId ? <>Update Ingredient</> : <>Save Ingredient</>}
             </button>

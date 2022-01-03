@@ -1,16 +1,15 @@
 
 export const RecipeIngredientCard = ({ ingredient }) => {
 
-  
 
    
        
      
 
     return (
-<section className="recipeIngredient"><small>
+<section className="recipeIngredient"><p>
 
                 {ingredient.ingredientName}
-            </small>
+            </p>
 </section>)
 }
