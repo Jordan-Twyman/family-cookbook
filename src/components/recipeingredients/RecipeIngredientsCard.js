@@ -8,9 +8,9 @@ export const RecipeIngredientCard = ({ ingredient }) => {
      
 
     return (
-<section className="recipeIngredient"><h3>
+<section className="recipeIngredient"><small>
 
                 {ingredient.ingredientName}
-            </h3>
+            </small>
 </section>)
 }

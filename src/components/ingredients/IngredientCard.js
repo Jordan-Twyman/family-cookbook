@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Ingredient.css";
 import { IngredientContext } from "./IngredientProvider";
+import { Link } from "react-router-dom";
 
 
 export const IngredientCard = ({ ingredient }) => {
@@ -20,18 +21,15 @@ export const IngredientCard = ({ ingredient }) => {
 
     return (
 <section className="ingredient">
-<h3>
-    {ingredient.ingredientName}
-</h3>
-<p><label htmlFor="completed">Completed?</label></p>
-    <input className="completed" type ="checkbox"  onChange={handleCheckbox}/>
+<p className="ingredientName">
+<Link to={`/ingredients/edit/${ingredient.id}`}>    {ingredient.ingredientName}</Link></p>
+    <small><input className="completed" type ="checkbox"  onChange={handleCheckbox}/></small>
     
-    <br/><button className="btn btn-secondary edit-button" onClick={() => {
-    navigate(`/ingredients/edit/${ingredient.id}`)
-}}>Edit</button>
+   
 </section>
 
     )
 }else {
     return ("")
 }}
+

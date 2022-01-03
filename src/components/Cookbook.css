@@ -37,3 +37,14 @@ strong {
 address {
   margin: 0 0 1.5em;
 }
+
+.detailsBox {
+  display:flex;
+  justify-content: space-between;
+}
+aside {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}

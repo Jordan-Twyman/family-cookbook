@@ -1,23 +1,23 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from 'react-router-dom';
 import { IngredientContext } from "../ingredients/IngredientProvider";
-import { RecipeContext } from "../recipes/RecipeProvider";
 import { RecipeIngredientContext } from "./RecipeIngredientsProvider";
 
 
 export const RecipeIngredientsForm = () => {
   const { addRecipeIngredient, getRecipeIngredientById } = useContext(RecipeIngredientContext);
-  const { ingredients, getIngredients } = useContext(LocationContext);
+  const { ingredients, getIngredients } = useContext(IngredientContext);
   const { recipeIngredientsId } = useParams()
   /*
   With React, we do not target the DOM with `document.querySelector()`. Instead, our return (render) reacts to state or props.
   Define the intial state of the form inputs with useState()
   */
+  const [ingredient, setIngredient] = useState({})
 
   const [recipeIngredient, setRecipeIngredient] = useState({
 
     recipeId: 0,
-    ingredientId:false,
+    ingredientId:0,
     amount:""    
 });
 
@@ -63,7 +63,7 @@ export const RecipeIngredientsForm = () => {
     
     
 
-    if (recipeId === 0 || ingredientId === 0) {
+    if (recipeId === 0) {
       window.alert("Please enter complete employee information");
     
     //   .then(() => navigate(`/employees/detail/${employeeId}`))
@@ -73,19 +73,18 @@ export const RecipeIngredientsForm = () => {
     //   .then(() => navigate("/employees"));
     }
   }
-
   return (
-    <form className="employeeForm">
-      <h2 className="employeeForm__title">New Employee</h2>
+    <form className="recipeIngredientForm">
+      <h2 className="recipeIngredientForm__title">Recipe Ingredient</h2>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="employeeName">Employee name:</label>
+          <label htmlFor="ingredientAmount">amount:</label>
           <input type="text" id="name" name="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Employee name" defaultValue={recipeIngredient.name}/>
         </div>
       </fieldset>
       <fieldset>
         <div className="form-group">
-          <label htmlFor="location">Assign to location: </label>
+          <label htmlFor="location">Ingredient Select: </label>
           <select value={recipeIngredient.ingredientId} name="ingredientId" id="ingredient" className="form-control" onChange={handleControlledInputChange} >
             <option value="0">Select a location</option>
             {ingredients.map(l => (

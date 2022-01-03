@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 export const IngredientForm = () => {
     const { addIngredient,getIngredientById,updateIngredient } = useContext(IngredientContext)
-    
+    const [recipe] = useState({})
     const [ingredient, setIngredient] = useState({
                 userId:+localStorage.activeUser,
                 id:"",
@@ -30,6 +30,7 @@ export const IngredientForm = () => {
       }
   
       const handleClickSaveEvent = () =>{
+       
         // const recipeObj = recipes.find(r => r.id ===)
         // const ingredientObj = ingredients.find(i => i.id === filteredJointObj.ingredientId)
           if (ingredient.ingredientName === "" ){window.alert("No ingredient input")
@@ -43,6 +44,7 @@ export const IngredientForm = () => {
                             completed:false
                             
                             })
+                         .then(()=> navigate(`/recipes/detail/${recipe.id}`))
                         //  .then(()=> navigate(`/recipes/detail/1`))
                     }else{
                         addIngredient({
@@ -51,7 +53,7 @@ export const IngredientForm = () => {
                             completed:false
                          
                         })
-                        // .then(()=> navigate(`/recipes/detail/1`))
+                        .then(()=> navigate(`/recipes/detail/${recipe.id}`))
 
                         // .then(()=> navigate("/ingredients/"))
                     }
@@ -79,7 +81,8 @@ export const IngredientForm = () => {
             <button id="saveEvent-button"className="btn btn-secondary" disabled={isLoading}
               onClick={e => {
                   e.preventDefault()
-                  handleClickSaveEvent()}
+                  handleClickSaveEvent()
+                  e.target.reset();}
                   }>
               {ingredientId ? <>Update Ingredient</> : <>Save Ingredient</>}
             </button>

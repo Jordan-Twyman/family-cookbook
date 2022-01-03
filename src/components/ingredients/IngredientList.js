@@ -25,6 +25,7 @@ export const IngredientList = () => {
     <>
       <div className="ingredientsContainer">
         <h2>Grocery List</h2>
+        <small>Check <input type="checkbox"/> when completed</small><br></br>
         <button className="btn btn-secondary add-ingredient-button" onClick={() => navigate("/ingredients/create")}>
             Add Item
         </button>
