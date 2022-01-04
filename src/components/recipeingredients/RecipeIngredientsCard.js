@@ -1,4 +1,5 @@
 
+
 export const RecipeIngredientCard = ({ ingredient }) => {
 
 
@@ -7,9 +8,12 @@ export const RecipeIngredientCard = ({ ingredient }) => {
      
 
     return (
-<section className="recipeIngredient"><p>
+        
+        
+<section className="recipeIngredient"><div>
 
                 {ingredient.ingredientName}
-            </p>
-</section>)
+            </div>
+</section>
+)
 }

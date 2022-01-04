@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useState, Component } from "react"
 import { IngredientForm } from "../ingredients/IngredientForm"
 import { IngredientContext } from "../ingredients/IngredientProvider"
 import { RecipeIngredientCard } from "./RecipeIngredientsCard"
@@ -7,6 +7,7 @@ import { RecipeContext } from "../recipes/RecipeProvider"
 import { RecipeIngredientContext } from "./RecipeIngredientsProvider"
 import { useNavigate, useParams } from "react-router-dom"
 import "./RecipeIngredients.css"
+
 
 
 export const RecipeIngredientsSearch = () => {
@@ -34,6 +35,10 @@ export const RecipeIngredientsSearch = () => {
     ingredientId:0,
     recipeId:0,
 });
+
+
+  
+
 
 
   const handleControlledInputChange = (event) => {
@@ -78,6 +83,8 @@ export const RecipeIngredientsSearch = () => {
       setFiltered(ingredients)
     }
   }, [searchTerms, ingredients])
+
+ 
   
 
   return (
@@ -88,7 +95,7 @@ export const RecipeIngredientsSearch = () => {
       <input type="text"
         className="input--wide"
         onKeyUp={(event) => setSearchTerms(event.target.value)}
-        placeholder="Search ingredient to add... " /><div className="ingredientList">
+        placeholder="Search " /><div className="ingredientList">
         
 
         
@@ -98,29 +105,23 @@ export const RecipeIngredientsSearch = () => {
             })
         }
         </div>
+        </div>
 
-          </div>
-            <form className="recipeIngredientForm">
+          
+            <form className="recipeIngredientForm form-group">
       
-      {/* <fieldset>
-        <div className="form-group">
-          <label htmlFor="location">Ingredient Select: </label>
+      <fieldset>
+        <div>
           <select value={recipeIngredient.ingredientId} name="ingredientId" id="ingredientId" className="form-control" onChange={handleControlledInputChange} >
-            <option value="0">Select a location</option>
+            <option value="0">Select ingredient</option>
             {ingredients.map( l => (
               <option key={l.id} value={l.id}>
                 {l.ingredientName}
               </option>
             ))}
           </select>
-        </div>
-      </fieldset> */}
-      <fieldset>
-                <div className="form-group">
-                    <label htmlFor="name">Ingredient:</label>
-                    <input type="text" id="ingredientId" name="ingredientName" onChange={handleControlledInputChange} defaultVaule={e => setSearchTerms(e.target.value)} required autoFocus className="form-control"/>
-                </div>
-            </fieldset>
+          </div>
+      </fieldset>
             <fieldset>
         <div className="form-group">
           <label htmlFor="ingredientAmount">amount:</label>
@@ -131,14 +132,13 @@ export const RecipeIngredientsSearch = () => {
         onClick={e => {
           e.preventDefault() 
           handleClickSaveIngredient()}}>
-        Add Ingredient
-      </button> <button className="btn btn-secondary add-ingredient-button" onClick={() => navigate("/ingredients/create")}>
+        Add Ingredient </button>
+      {/* </button> <button className="btn btn-secondary add-ingredient-button" onClick={() => navigate("/ingredients/create")}>
             Add New Ingredient
-        </button>
+        </button> */}
     </form>
-
-            
-    </div>
+    <IngredientForm />
+      </div>      
     </>
   )
 }

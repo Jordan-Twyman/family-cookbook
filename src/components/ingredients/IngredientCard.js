@@ -21,8 +21,8 @@ export const IngredientCard = ({ ingredient }) => {
 
     return (
 <section className="ingredient">
-<p className="ingredientName">
-<Link to={`/ingredients/edit/${ingredient.id}`}>    {ingredient.ingredientName}</Link></p>
+<p contentEditable="true" className="ingredientName">
+    {ingredient.ingredientName}</p>
     <small><input className="completed" type ="checkbox"  onChange={handleCheckbox}/></small>
     
    

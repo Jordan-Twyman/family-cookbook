@@ -71,7 +71,7 @@ export const IngredientForm = () => {
         }, [])
  return (
         <form className="eventForm">
-             {ingredientId ? <h2 className="eventForm__title">Edit Ingredient</h2>: <h2 className="eventForm__title">New Ingredient</h2>} 
+             {ingredientId ? <h2 className="eventForm__title">Edit Ingredient</h2>: <h2 className="eventForm__title"> </h2>} 
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Ingredient name:</label>
@@ -84,7 +84,7 @@ export const IngredientForm = () => {
                   handleClickSaveEvent()
                   }
                   }>
-              {ingredientId ? <>Update Ingredient</> : <>Save Ingredient</>}
+              {ingredientId ? <>Update Ingredient</> : <>New Ingredient</>}
             </button>
         </form>
       )
