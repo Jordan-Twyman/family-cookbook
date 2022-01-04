@@ -1,6 +1,6 @@
 
 
-export const RecipeIngredientCard = ({ ingredient }) => {
+export const RecipeIngredientCard = ({ ingredient, setChosenIngredient }) => {
 
 
    
@@ -10,10 +10,10 @@ export const RecipeIngredientCard = ({ ingredient }) => {
     return (
         
         
-<section className="recipeIngredient"><div>
+<section className="recipeIngredient"><small onClick={() => setChosenIngredient(ingredient)}>
 
                 {ingredient.ingredientName}
-            </div>
+            </small>
 </section>
 )
 }

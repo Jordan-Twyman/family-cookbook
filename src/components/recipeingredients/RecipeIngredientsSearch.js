@@ -35,7 +35,8 @@ export const RecipeIngredientsSearch = () => {
     ingredientId:0,
     recipeId:0,
 });
-
+ 
+const [ chosenIngredient, setChosenIngredient ] = useState ("")
 
   
 
@@ -58,7 +59,7 @@ export const RecipeIngredientsSearch = () => {
             //resetting both states
          
             addRecipeIngredient({
-              ingredientId:+recipeIngredient.ingredientId,
+              ingredientId:+chosenIngredient.id,
               amount:recipeIngredient.amount,
               recipeId:+recipeId,
                }
@@ -70,7 +71,9 @@ export const RecipeIngredientsSearch = () => {
                 amount:""  
               })
             })
-           }  //reloading the list with the new list, message edit state set back to 0, message needs to ga back to empty
+           } 
+           
+           //reloading the list with the new list, message edit state set back to 0, message needs to ga back to empty
 
 
   useEffect(() => {
@@ -101,7 +104,7 @@ export const RecipeIngredientsSearch = () => {
         
         {
             filteredIngredients.map(ingredient => {
-                return <RecipeIngredientCard key={ingredient.id} ingredient={ingredient} />
+                return <RecipeIngredientCard key={ingredient.id} ingredient={ingredient} setChosenIngredient={setChosenIngredient} />
             })
         }
         </div>
@@ -111,15 +114,15 @@ export const RecipeIngredientsSearch = () => {
             <form className="recipeIngredientForm form-group">
       
       <fieldset>
-        <div>
-          <select value={recipeIngredient.ingredientId} name="ingredientId" id="ingredientId" className="form-control" onChange={handleControlledInputChange} >
+        <div><input type="text"  value={chosenIngredient.ingredientName}/>
+          {/* <select value={recipeIngredient.ingredientId} name="ingredientId" id="ingredientIdncd " className="form-control" onChange={handleControlledInputChange} >
             <option value="0">Select ingredient</option>
             {ingredients.map( l => (
               <option key={l.id} value={l.id}>
                 {l.ingredientName}
               </option>
             ))}
-          </select>
+          </select> */}
           </div>
       </fieldset>
             <fieldset>

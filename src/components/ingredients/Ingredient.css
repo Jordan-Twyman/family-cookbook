@@ -1,0 +1,10 @@
+.ingredients {
+    width:auto;
+    height: auto;
+    overflow-y: scroll;
+    scrollbar-color: black;
+    scrollbar-width: thin;
+    border: black solid 1;
+    display:flex;
+    justify-content: space-evenly;
+}

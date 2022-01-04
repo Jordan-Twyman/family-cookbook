@@ -41,11 +41,10 @@ const handleRelease = () => {
   return (
     <section className="recipe">
       <h1 className="recipe__name">{recipe.recipeName}</h1>
-      <h3 className="recipe__detailsLabel">Details</h3>
+      <h3 className="recipe__detailsLabel">Description</h3>
       <div className="recipe__details">{recipe.recipeDetails}</div>
-      <h3 className="recipe__instructionsLabel">Instructions</h3>
-      <div className="recipe__instructions">{recipe.recipeInstructions}</div>
       <h3 className="recipe__ingredientsLabel">Ingredients</h3>
+
       <div>
                 <ul>
                     {
@@ -61,10 +60,15 @@ const handleRelease = () => {
                     }
                 </ul>
             </div>
-      <button onClick={handleRelease}>Remove</button>
-      <button onClick={() => {
+      
+      <h3 className="recipe__ingredientsLabel">Instructions</h3>
+
+ <div className="recipe__instructions">{recipe.recipeInstructions}</div>
+ <button onClick={() => {
     navigate(`/recipes/edit/${recipe.id}`)
-}}>Edit</button>
+}}>Add Instructions</button>
+      <button onClick={handleRelease}>Remove Recipe</button>
+
 
     </section>
   )
