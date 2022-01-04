@@ -3,6 +3,7 @@ import { RecipeContext } from "./RecipeProvider"
 import { RecipeCard } from "./RecipeCard"
 import "./Recipe.css"
 import { useNavigate } from "react-router"
+import { Example } from "./RecipeModalForm"
 
 
 
@@ -32,9 +33,8 @@ export const RecipeList = ({}) => {
         <>
             <h2>Recipes</h2>
 
-            <button onClick={() => navigate("/recipes/create")}>
-                New Recipe
-            </button>
+            
+            <Example/>
             <div className="recipes">
                 {
                     filteredRecipes.map(recipe => {

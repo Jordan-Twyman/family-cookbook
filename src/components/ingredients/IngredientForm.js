@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 export const IngredientForm = () => {
     const { addIngredient,getIngredientById,updateIngredient } = useContext(IngredientContext)
-    
+    const [recipe] = useState({})
     const [ingredient, setIngredient] = useState({
                 userId:+localStorage.activeUser,
                 id:"",
@@ -30,6 +30,7 @@ export const IngredientForm = () => {
       }
   
       const handleClickSaveEvent = () =>{
+       
         // const recipeObj = recipes.find(r => r.id ===)
         // const ingredientObj = ingredients.find(i => i.id === filteredJointObj.ingredientId)
           if (ingredient.ingredientName === "" ){window.alert("No ingredient input")
@@ -43,6 +44,7 @@ export const IngredientForm = () => {
                             completed:false
                             
                             })
+                        //  .then(()=> navigate(`/recipes/detail/${recipe.id}`))
                         //  .then(()=> navigate(`/recipes/detail/1`))
                     }else{
                         addIngredient({
@@ -51,7 +53,7 @@ export const IngredientForm = () => {
                             completed:false
                          
                         })
-                        // .then(()=> navigate(`/recipes/detail/1`))
+                        // .then(()=> navigate(`/recipes/detail/${recipe.id}`))
 
                         // .then(()=> navigate("/ingredients/"))
                     }
@@ -69,7 +71,7 @@ export const IngredientForm = () => {
         }, [])
  return (
         <form className="eventForm">
-             {ingredientId ? <h2 className="eventForm__title">Edit Ingredient</h2>: <h2 className="eventForm__title">New Ingredient</h2>} 
+             {ingredientId ? <h2 className="eventForm__title">Edit Ingredient</h2>: <h2 className="eventForm__title"> </h2>} 
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Ingredient name:</label>
@@ -79,9 +81,10 @@ export const IngredientForm = () => {
             <button id="saveEvent-button"className="btn btn-secondary" disabled={isLoading}
               onClick={e => {
                   e.preventDefault()
-                  handleClickSaveEvent()}
+                  handleClickSaveEvent()
+                  }
                   }>
-              {ingredientId ? <>Update Ingredient</> : <>Save Ingredient</>}
+              {ingredientId ? <>Update Ingredient</> : <>New Ingredient</>}
             </button>
         </form>
       )

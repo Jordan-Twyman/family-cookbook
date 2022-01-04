@@ -1,0 +1,9 @@
+
+  
+  .ingredientList {
+      width:auto;
+      height: 450px;
+      overflow-y: scroll;
+      scrollbar-color: black;
+      scrollbar-width: thin;
+  }

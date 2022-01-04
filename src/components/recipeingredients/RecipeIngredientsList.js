@@ -31,7 +31,6 @@ export const RecipeIngredientList = ({}) => {
 
     return (
         <>
-            <h2>Ingredients</h2>
 
             <div className="recipeIngredients">
                 {

@@ -1,16 +1,19 @@
 
-export const RecipeIngredientCard = ({ ingredient }) => {
 
-  
+export const RecipeIngredientCard = ({ ingredient, setChosenIngredient }) => {
+
 
    
        
      
 
     return (
-<section className="recipeIngredient"><h3>
+        
+        
+<section className="recipeIngredient"><small onClick={() => setChosenIngredient(ingredient)}>
 
                 {ingredient.ingredientName}
-            </h3>
-</section>)
+            </small>
+</section>
+)
 }

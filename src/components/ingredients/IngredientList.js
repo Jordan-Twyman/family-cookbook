@@ -3,6 +3,7 @@ import { useNavigate } from "react-router"
 import { IngredientContext } from "./IngredientProvider"
 import { IngredientCard } from "./IngredientCard"
 import "./Ingredient.css"
+import { IngredientForm } from "./IngredientForm"
 
 
 
@@ -25,9 +26,9 @@ export const IngredientList = () => {
     <>
       <div className="ingredientsContainer">
         <h2>Grocery List</h2>
-        <button className="btn btn-secondary add-ingredient-button" onClick={() => navigate("/ingredients/create")}>
-            Add Item
-        </button>
+        <small>Check <input type="checkbox"/> when completed</small><br></br>
+        <big>Quick Add</big>
+       <IngredientForm/>
         <div className="ingredients">
             {/* {console.log("TaskList: Render", tasks)} */}
             

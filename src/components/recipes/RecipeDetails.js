@@ -9,44 +9,13 @@ import { RecipeIngredientContext } from "../recipeingredients/RecipeIngredientsP
 
 export const RecipeDetail = () => {
   const { getRecipeById, removeRecipe } = useContext(RecipeContext)
-  const { getIngredients, ingredients, updateIngredient } = useContext(IngredientContext)
+  const { getIngredients, ingredients } = useContext(IngredientContext)
   const { getRecipeIngredients, recipeIngredients } = useContext(RecipeIngredientContext)
-  const [idToEdit, setIdToEdit] = useState(0)
 
 	const [recipe, setRecipe] = useState({})
-  const [ingredient, setIngredient] = useState({})
 
 	const {recipeId} = useParams();
 	const navigate = useNavigate();
-
-  const handleControlledInputChange = (event) => {
-    //When changing a state object or array,
-    //always create a copy make changes, and then set state.
-    const newIngredient = { ...ingredient }
-    //animal is an object with properties.
-    //set the property to the new value
-    newIngredient[event.target.id] = event.target.value
-    //update state
-    setIngredient(newIngredient)
-  }
-
-
-  const handleSaveIngredient = () => {
-      if (idToEdit){    //if theres id to edit in the state then do this
-        //PUT - update , gets message ID from address
-        updateIngredient({
-            id: ingredient.id,
-            userId: +localStorage.activeUser,
-            ingredientName: ingredient.ingredientName
-        })
-        .then(()=> {
-            //resetting both states
-            setIdToEdit(0)
-            setIngredient({})
-            getIngredients() })  //reloading the list with the new list, message edit state set back to 0, message needs to ga back to empty
-      }
-    }
-  
 
   useEffect(() => {
     getIngredients()
@@ -59,7 +28,6 @@ export const RecipeDetail = () => {
     })
   })}, [])
 
-    // const history = useHistory()
 
 const handleRelease = () => {
     removeRecipe(recipe.id)
@@ -69,19 +37,17 @@ const handleRelease = () => {
   }
 
 
-  return ( 
-    <>
+
+  return (
     <section className="recipe">
       <h1 className="recipe__name">{recipe.recipeName}</h1>
-      <h3 className="recipe__detailsLabel">Details</h3>
+      <h3 className="recipe__detailsLabel">Description</h3>
       <div className="recipe__details">{recipe.recipeDetails}</div>
-      <h3 className="recipe__instructionsLabel">Instructions</h3>
-      <div className="recipe__instructions">{recipe.recipeInstructions}</div>
-      <h3 className="recipe__ingredientsnpm Label">Ingredients</h3>
+      <h3 className="recipe__ingredientsLabel">Ingredients</h3>
+
       <div>
                 <ul>
                     {
-                      
                       recipeIngredients.filter(singleJointObj => singleJointObj.recipeId === recipe.id ).map(filteredJointObj => {
                         const ingredientObj = ingredients.find(i => i.id === filteredJointObj.ingredientId)
                         console.log(filteredJointObj)
@@ -94,19 +60,16 @@ const handleRelease = () => {
                     }
                 </ul>
             </div>
-            <aside>
-
-            </aside>
-            <div>
-      <button onClick={handleRelease}>Remove</button>
-      <button onClick={() => {
-    navigate(`/recipes/edit/${recipe.id}`)
-}}>Edit</button>
-</div>
-            </section>
-
-</>
-
       
-  
-)}
+      <h3 className="recipe__ingredientsLabel">Instructions</h3>
+
+ <div className="recipe__instructions">{recipe.recipeInstructions}</div>
+ <button onClick={() => {
+    navigate(`/recipes/edit/${recipe.id}`)
+}}>Add Instructions</button>
+      <button onClick={handleRelease}>Remove Recipe</button>
+
+
+    </section>
+  )
+}
