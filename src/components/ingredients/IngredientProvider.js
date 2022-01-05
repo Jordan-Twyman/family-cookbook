@@ -47,20 +47,20 @@ export const IngredientProvider = (props) => {
           .then(getIngredients)
       }
 
-      const completed = (ingredientId, isComplete) => {
-        return fetch(`http://localhost:8088/ingredients/${ingredientId}`, {
-            method: "PATCH",
-            headers: {'Content-type': 'application/json'},
-            body: JSON.stringify({
-                completed: isComplete,
-            }),
-        }).then(getIngredients)
+    //   const completed = (ingredientId, isComplete) => {
+    //     return fetch(`http://localhost:8088/ingredients/${ingredientId}`, {
+    //         method: "PATCH",
+    //         headers: {'Content-type': 'application/json'},
+    //         body: JSON.stringify({
+    //             completed: isComplete,
+    //         }),
+    //     }).then(getIngredients)
         //.then(response => response.json())
-    } 
+    // } 
 
     return (
         <IngredientContext.Provider value={{
-            ingredients, getIngredients, addIngredient, updateIngredient, getIngredientById, removeIngredient, completed, setSearchTerms, searchTerms
+            ingredients, getIngredients, addIngredient, updateIngredient, getIngredientById, removeIngredient, setSearchTerms, searchTerms
         }}>
             {props.children}
         </IngredientContext.Provider>

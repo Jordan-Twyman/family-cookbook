@@ -41,6 +41,8 @@ export const RecipeList = ({}) => {
                         return <RecipeCard key={recipe.id} recipe={recipe} />
                     })
                 }
+                    
+
             </div>
         </>
     )

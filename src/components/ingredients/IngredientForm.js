@@ -51,7 +51,13 @@ export const IngredientForm = () => {
                             ingredientName:ingredient.ingredientName,
                             completed:false
                          
-                        })
+                        })  
+                        .then(() => {
+
+                            setIngredient({
+                              ingredientName:"",
+                            })
+                          })
                         // .then(()=> navigate(`/recipes/detail/${recipe.id}`))
 
                         // .then(()=> navigate("/ingredients/"))

@@ -4,11 +4,13 @@ import "./Recipe.css"
 import { useParams, useNavigate } from "react-router-dom"
 import { IngredientContext } from "../ingredients/IngredientProvider"
 import { RecipeIngredientContext } from "../recipeingredients/RecipeIngredientsProvider"
+import { MenuContext } from "../menu/MenuProvider"
 
 
 
 export const RecipeDetail = () => {
   const { getRecipeById, removeRecipe } = useContext(RecipeContext)
+  const { getMenu, madeIt, addMenu } = useContext(MenuContext)
   const { getIngredients, ingredients } = useContext(IngredientContext)
   const { getRecipeIngredients, recipeIngredients } = useContext(RecipeIngredientContext)
 
@@ -35,6 +37,22 @@ const handleRelease = () => {
         navigate("/recipes")
       })
   }
+
+  const handleClickSaveMenuItem = () => {
+          
+    //resetting both states
+ 
+    addMenu({
+      recipeId:+recipeId,
+      madeIt:false,
+      userId:+localStorage.activeUser
+       }
+    ).then(() => {
+      navigate("/menu")
+    })
+    
+
+      }
 
 
 
@@ -68,6 +86,8 @@ const handleRelease = () => {
     navigate(`/recipes/edit/${recipe.id}`)
 }}>Add Instructions</button>
       <button onClick={handleRelease}>Remove Recipe</button>
+      <button className="madeIt"  onClick={handleClickSaveMenuItem}>Make it!</button>
+
 
 
     </section>

@@ -114,7 +114,7 @@ const [ chosenIngredient, setChosenIngredient ] = useState ("")
             <form className="recipeIngredientForm form-group">
       
       <fieldset>
-        <div><input type="text"  value={chosenIngredient.ingredientName}/>
+        <div>{chosenIngredient.ingredientName}
         
           </div>
       </fieldset>
