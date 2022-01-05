@@ -16,15 +16,14 @@ export const IngredientList = () => {
   const { ingredients, getIngredients } = useContext(IngredientContext)
   const { recipeIngredients, getRecipeIngredients } = useContext(RecipeIngredientContext)
   const { menus, getMenu } = useContext(MenuContext)
-  const { recipes, getRecipes } = useContext(MenuContext)
+  const { recipes, getRecipe } = useContext(MenuContext)
 
 //   const [filter, setFilter] = useState('Incomplete');
 
   const navigate = useNavigate()
 
   useEffect(() => {
-    getRecipeIngredients().then
-    (getIngredients).then(getMenu)
+    getIngredients().then(getMenu)
         }
     ,[]);
 
@@ -35,36 +34,31 @@ export const IngredientList = () => {
 
   // Find recipes that match join table entries
   let recipes = joinTableEntries.map(singleJoinTableEntry => {
-    const ingredientObj = ingredients.find(i => i.id === filteredJointObj.ingredientId)
-    
-    //     console.log(filteredJointObj) 
-  console.log("recipes", recipes)
+    // Find the recipe that matches the single join table entry
 
-  //   // Find the recipe that matches the single join table entry
+    // Return the recipe that we found
+  })
+  console.log(recipes)
 
-  //   // Return the recipe that we found
-  // })
-  // console.log(recipes)
+  // Find recipeIngrdient join table entries that match recipes
+  let recipeIngreidnetJoinTableEntries = recipes.map(singleRecipe => {
+    // find the matching recipeIngredients using .filter
 
-  // // Find recipeIngrdient join table entries that match recipes
-  // let recipeIngreidnetJoinTableEntries = recipes.map(singleRecipe => {
-  //   // find the matching recipeIngredients using .filter
+    // You'll end up with an array of matching recipeIngredients
 
-  //   // You'll end up with an array of matching recipeIngredients
+    // Return array with spread operator?
+  })
 
-  //   // Return array with spread operator?
-  // })
+  // Find ingredients that match recipeIngredient join table entries
+  let ingredientsForTheWeek = recipeIngreidnetJoinTableEntries.map(singleJoinTableObject => {
+    // Find the associated ingredient for this join table entry (there can only be one! use .find!)
 
-  // // Find ingredients that match recipeIngredient join table entries
-  // let ingredientsForTheWeek = recipeIngreidnetJoinTableEntries.map(singleJoinTableObject => {
-  //   // Find the associated ingredient for this join table entry (there can only be one! use .find!)
+    // Return the ingredient
 
-  //   // Return the ingredient
+  }) 
 
-  // }) 
-
-  // return ingredientsForTheWeek
- 
+  return ingredientsForTheWeek
+ }
 
 
   // .map(anotherJointObj => anotherJointObj.recipeId === recipes.id).map(filteredJointObj => {
@@ -97,7 +91,7 @@ export const IngredientList = () => {
         </div>
       </div>
       </>)
-      })
+      }
 
 
 
