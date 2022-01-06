@@ -6,5 +6,6 @@
     scrollbar-width: thin;
     border: black solid 1;
     display:flex;
+    flex-flow: column-reverse wrap;
     justify-content: space-evenly;
 }

@@ -40,7 +40,6 @@ export const IngredientForm = () => {
                             userId:+localStorage.activeUser,
                             id:parseInt(ingredient.id),
                             ingredientName:ingredient.ingredientName,
-                            completed:false
                             
                             })
                         //  .then(()=> navigate(`/recipes/detail/${recipe.id}`))
@@ -49,7 +48,6 @@ export const IngredientForm = () => {
                         addIngredient({
                             userId:+localStorage.activeUser,
                             ingredientName:ingredient.ingredientName,
-                            completed:false
                          
                         })  
                         .then(() => {

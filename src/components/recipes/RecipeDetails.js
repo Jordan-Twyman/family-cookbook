@@ -12,11 +12,13 @@ export const RecipeDetail = () => {
   const { getRecipeById, removeRecipe } = useContext(RecipeContext)
   const { getMenu, madeIt, addMenu } = useContext(MenuContext)
   const { getIngredients, ingredients } = useContext(IngredientContext)
-  const { getRecipeIngredients, recipeIngredients } = useContext(RecipeIngredientContext)
+  const { getRecipeIngredients, recipeIngredients, removeRecipeIngredient } = useContext(RecipeIngredientContext)
 
 	const [recipe, setRecipe] = useState({})
 
 	const {recipeId} = useParams();
+  const {recipeIngredientId} = useParams();
+
 	const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,6 +37,12 @@ const handleRelease = () => {
     removeRecipe(recipe.id)
       .then(() => {
         navigate("/recipes")
+      })
+  }
+  const handleIngredientRelease = () => {
+    removeRecipeIngredient(recipeIngredients.id)
+      .then(() => {
+        navigate(`/recipes`)
       })
   }
 
@@ -70,7 +78,8 @@ const handleRelease = () => {
                         const ingredientObj = ingredients.find(i => i.id === filteredJointObj.ingredientId)
                         console.log(filteredJointObj)
                       return (
-                        <li>{filteredJointObj?.amount} {ingredientObj?.ingredientName}</li>
+                        <><li>{filteredJointObj?.amount} {ingredientObj?.ingredientName}</li>  <button onClick={handleIngredientRelease}>Remove Ingredient</button></>
+
                       )
                       })
 

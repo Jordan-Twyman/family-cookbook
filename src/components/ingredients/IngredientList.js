@@ -90,7 +90,7 @@ return ingredientObj
   return (
   
       <div className="ingredientsContainer">
-        <h2>Menu Grocery List</h2>
+        <h2>Grocery List</h2>
         <div className="ingredients">
             {/* {console.log("TaskList: Render", tasks)} */}
             
@@ -105,7 +105,6 @@ return ingredientObj
             
               return (
                 <li>{filteredIngredientObj?.ingredientName}</li>
-              
               )})}
         </div>
       </div>

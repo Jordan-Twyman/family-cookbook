@@ -25,9 +25,16 @@ export const RecipeIngredientsProvider = (props) => {
         .then(getRecipeIngredients)
     }
 
+    const removeRecipeIngredient = recipeIngredientId => {
+        return fetch(`http://localhost:8088/recipeIngredients/${recipeIngredientId}`, {
+            method: "DELETE"
+        })
+            .then(getRecipeIngredients)
+      }
+
     return (
         <RecipeIngredientContext.Provider value={{
-            recipeIngredients, getRecipeIngredients, addRecipeIngredient
+            recipeIngredients, getRecipeIngredients, addRecipeIngredient, removeRecipeIngredient
         }}>
             {props.children}
         </RecipeIngredientContext.Provider>
