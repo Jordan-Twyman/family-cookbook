@@ -7,13 +7,9 @@ import { Link } from "react-router-dom";
 
 export const IngredientCard = ({ ingredient }) => {
 
-    const { getIngredients, completed } = useContext(IngredientContext)
     const navigate = useNavigate();
 
-    const handleCheckbox = (e) => {
-        e.preventDefault();
-        completed(ingredient.id, true).then(getIngredients)
-    }
+ 
 
     if (ingredient.userId === +localStorage.activeUser) {
        
@@ -21,9 +17,8 @@ export const IngredientCard = ({ ingredient }) => {
 
     return (
 <section className="ingredient">
-<p contentEditable="true" className="ingredientName">
+<p className="ingredientName" >
     {ingredient.ingredientName}</p>
-    <small><input className="completed" type ="checkbox"  onChange={handleCheckbox}/></small>
     
    
 </section>

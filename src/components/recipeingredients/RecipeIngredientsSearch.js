@@ -114,15 +114,8 @@ const [ chosenIngredient, setChosenIngredient ] = useState ("")
             <form className="recipeIngredientForm form-group">
       
       <fieldset>
-        <div><input type="text"  value={chosenIngredient.ingredientName}/>
-          {/* <select value={recipeIngredient.ingredientId} name="ingredientId" id="ingredientIdncd " className="form-control" onChange={handleControlledInputChange} >
-            <option value="0">Select ingredient</option>
-            {ingredients.map( l => (
-              <option key={l.id} value={l.id}>
-                {l.ingredientName}
-              </option>
-            ))}
-          </select> */}
+        <div>{chosenIngredient.ingredientName}
+        
           </div>
       </fieldset>
             <fieldset>

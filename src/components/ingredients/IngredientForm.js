@@ -5,7 +5,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 export const IngredientForm = () => {
     const { addIngredient,getIngredientById,updateIngredient } = useContext(IngredientContext)
-    const [recipe] = useState({})
     const [ingredient, setIngredient] = useState({
                 userId:+localStorage.activeUser,
                 id:"",
@@ -52,7 +51,13 @@ export const IngredientForm = () => {
                             ingredientName:ingredient.ingredientName,
                             completed:false
                          
-                        })
+                        })  
+                        .then(() => {
+
+                            setIngredient({
+                              ingredientName:"",
+                            })
+                          })
                         // .then(()=> navigate(`/recipes/detail/${recipe.id}`))
 
                         // .then(()=> navigate("/ingredients/"))
