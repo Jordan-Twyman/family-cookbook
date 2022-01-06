@@ -50,22 +50,26 @@ export const IngredientList = () => {
     // find the matching recipeIngredients using .filter
 
     // You'll end up with an array of matching recipeIngredients
-return {...myRecipeObj}
+return [...myRecipeObj]
     // Return array with spread operator?
-  })
+  }).flat()
 
-  console.log("yo",recipeIngreidnetJoinTableEntries)
+  console.log("this should be an array of join table entries before we map",recipeIngreidnetJoinTableEntries)
 
   // Find ingredients that match recipeIngredient join table entries
   let ingredientsForTheWeek = recipeIngreidnetJoinTableEntries.map(filteredJointObj => {
+    console.log("this is a single join table thing inside the map",filteredJointObj)
+    // const array = (recipeIngreidnetJoinTableEntries.length)
+    // console.log(array)
     const ingredientObj = ingredients.find(i => i.id === filteredJointObj.ingredientId)
+    console.log("this should be an ingredient object that we find inside the map",ingredientObj)
     
     // Find the associated ingredient for this join table entry (there can only be one! use .find!)
 return ingredientObj
     // Return the ingredient
 
   }) 
-  console.log("yo yo",ingredientsForTheWeek)
+  console.log("this should be menu recipe's ingredients",ingredientsForTheWeek)
 
   return ingredientsForTheWeek
  }
@@ -84,7 +88,7 @@ return ingredientObj
  
 
   return (
-    <>
+  
       <div className="ingredientsContainer">
         <h2>Menu Grocery List</h2>
         <div className="ingredients">
@@ -97,13 +101,17 @@ return ingredientObj
             } */}
   
             
-            {getIngredientsForUsersMenu()}
+            {getIngredientsForUsersMenu().map(filteredIngredientObj => {
+            
+              return (
+                <li>{filteredIngredientObj?.ingredientName}</li>
+              
+              )})}
         </div>
       </div>
-      </>)
-      }
+      
 
-
+  )}
 
   // recipeIngredients.filter(singleJointObj => singleJointObj.recipeId === recipe.id ).map(filteredJointObj => {
   //   const ingredientObj = ingredients.find(i => i.id === filteredJointObj.ingredientId)
