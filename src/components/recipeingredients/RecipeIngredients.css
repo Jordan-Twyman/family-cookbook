@@ -2,8 +2,10 @@
   
   .ingredientList {
       width:auto;
-      height: 450px;
+      height: 250px;
       overflow-y: scroll;
       scrollbar-color: black;
       scrollbar-width: thin;
+      border: .5px solid black;
+
   }

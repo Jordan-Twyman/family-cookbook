@@ -87,7 +87,7 @@ export const IngredientForm = () => {
                   handleClickSaveEvent()
                   }
                   }>
-              {ingredientId ? <>Update Ingredient</> : <>New Ingredient</>}
+              {ingredientId ? <>Update Ingredient</> : <>Add</>}
             </button>
         </form>
       )

@@ -1,4 +1,4 @@
-import React, { useContext, useState, Component } from "react"
+import  { useContext, useState, Component } from "react"
 import { IngredientForm } from "../ingredients/IngredientForm"
 import { IngredientContext } from "../ingredients/IngredientProvider"
 import { RecipeIngredientCard } from "./RecipeIngredientsCard"
@@ -6,7 +6,14 @@ import { useEffect } from "react"
 import { RecipeContext } from "../recipes/RecipeProvider"
 import { RecipeIngredientContext } from "./RecipeIngredientsProvider"
 import { useNavigate, useParams } from "react-router-dom"
+import * as React from 'react';
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
 import "./RecipeIngredients.css"
+import SearchIcon from '@mui/icons-material/Search';
+import { Button, Modal } from "react-bootstrap";
+
+
 
 
 
@@ -16,7 +23,10 @@ export const RecipeIngredientsSearch = () => {
   const { addRecipeIngredient, getRecipeIngredients } = useContext(RecipeIngredientContext)
   const [ filteredIngredients, setFiltered ] = useState([])
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
   
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const {recipeId} = useParams();
 
@@ -34,11 +44,14 @@ export const RecipeIngredientsSearch = () => {
 
     ingredientId:0,
     recipeId:0,
+    amount:""
 });
  
 const [ chosenIngredient, setChosenIngredient ] = useState ("")
 
   
+
+
 
 
 
@@ -55,6 +68,8 @@ const [ chosenIngredient, setChosenIngredient ] = useState ("")
 
 
   const handleClickSaveIngredient = () => {
+    if ( recipeIngredient.ingredientId === undefined ){window.alert("No ingredient selected")
+  }else{
   
             //resetting both states
          
@@ -71,7 +86,7 @@ const [ chosenIngredient, setChosenIngredient ] = useState ("")
                 amount:""  
               })
             })
-           } 
+           } }
            
            //reloading the list with the new list, message edit state set back to 0, message needs to ga back to empty
 
@@ -94,14 +109,16 @@ const [ chosenIngredient, setChosenIngredient ] = useState ("")
     <>
     <div className="recipe">
     <h2 className="recipeIngredientForm__title">Add Ingredients</h2>
-      <div className="searchContainer"> Ingredient search:
-      <input type="text"
-        className="input--wide"
+      <div className="searchContainer"> 
+      
+      <SearchIcon/><input  type="text"
+        className="input--wide ingredientSearch"
+        style={{width:"215px", margin:"auto auto 5px auto"}}
         onKeyUp={(event) => setSearchTerms(event.target.value)}
-        placeholder="Search " /><div className="ingredientList">
+        placeholder={chosenIngredient.ingredientName} /><div className="ingredientList"> 
         
 
-        
+     
         {
             filteredIngredients.map(ingredient => {
                 return <RecipeIngredientCard key={ingredient.id} ingredient={ingredient} setChosenIngredient={setChosenIngredient} />
@@ -113,27 +130,41 @@ const [ chosenIngredient, setChosenIngredient ] = useState ("")
           
             <form className="recipeIngredientForm form-group">
       
-      <fieldset>
-        <div>{chosenIngredient.ingredientName}
-        
-          </div>
-      </fieldset>
+      
             <fieldset>
         <div className="form-group">
           <label htmlFor="ingredientAmount">amount:</label>
           <input type="text" id="amount" name="amount" onChange={handleControlledInputChange} value={recipeIngredient.amount} required autoFocus className="form-control" />
         </div>
       </fieldset>
-      <button className="btn btn-primary"
-        onClick={e => {
+      <Fab color="" style={{margin:"auto auto 10px 90px"}} aria-label="add" onClick={e => {
           e.preventDefault() 
           handleClickSaveIngredient()}}>
-        Add Ingredient </button>
-      {/* </button> <button className="btn btn-secondary add-ingredient-button" onClick={() => navigate("/ingredients/create")}>
-            Add New Ingredient
-        </button> */}
+  <AddIcon />
+</Fab>
+
+<>
+        <br></br><Button style={{margin:"5px 50px"}} variant="primary" onClick={handleShow}>
+          New Ingredient
+        </Button>
+  
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Add a new ingredient</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>   <IngredientForm /></Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            {/* <Button variant="primary" onClick={handleClickSaveEvent}>
+              Save
+            </Button> */}
+          </Modal.Footer>
+        </Modal>
+      </>
     </form>
-    <IngredientForm />
+   
       </div>      
     </>
   )

@@ -21,6 +21,7 @@ import {  MenuProvider } from "./menu/MenuProvider";
 export const ApplicationViews = () => {
 
     return (
+        <>
         <MenuProvider>
         <RecipeIngredientsProvider>
         <IngredientProvider>
@@ -39,5 +40,8 @@ export const ApplicationViews = () => {
         </IngredientProvider>
         </RecipeIngredientsProvider>
         </MenuProvider>
+                   <div className="imageContainer"> <img className="navLogo" src={require('./icon.png')}  alt="logo" /></div>
+                    </>
+
     )
 }

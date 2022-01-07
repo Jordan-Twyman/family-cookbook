@@ -5,6 +5,12 @@ import { useParams, useNavigate } from "react-router-dom"
 import { IngredientContext } from "../ingredients/IngredientProvider"
 import { RecipeIngredientContext } from "../recipeingredients/RecipeIngredientsProvider"
 import { MenuContext } from "../menu/MenuProvider"
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
+import Fab from '@mui/material/Fab';
+import EditIcon from '@mui/icons-material/Edit';
+
+
 
 
 
@@ -12,9 +18,11 @@ export const RecipeDetail = () => {
   const { getRecipeById, removeRecipe } = useContext(RecipeContext)
   const { getMenu, madeIt, addMenu } = useContext(MenuContext)
   const { getIngredients, ingredients } = useContext(IngredientContext)
-  const { getRecipeIngredients, recipeIngredients, removeRecipeIngredient } = useContext(RecipeIngredientContext)
+  const { getRecipeIngredients, recipeIngredients, removeRecipeIngredient, getRecipeIngredientById } = useContext(RecipeIngredientContext)
 
 	const [recipe, setRecipe] = useState({})
+  const [recipeIngredient, setRecipeIngredient] = useState({})
+
 
 	const {recipeId} = useParams();
   const {recipeIngredientId} = useParams();
@@ -29,8 +37,11 @@ export const RecipeDetail = () => {
     getRecipeById(recipeId)
     .then((response) => {
       setRecipe(response)
+      setRecipeIngredient(response)
     })
-  })}, [])
+
+  })
+}, [])
 
 
 const handleRelease = () => {
@@ -39,11 +50,9 @@ const handleRelease = () => {
         navigate("/recipes")
       })
   }
-  const handleIngredientRelease = () => {
-    removeRecipeIngredient(recipeIngredients.id)
-      .then(() => {
-        navigate(`/recipes`)
-      })
+  const handleIngredientRelease = (taco) => {
+    removeRecipeIngredient(taco.id)
+      
   }
 
   const handleClickSaveMenuItem = () => {
@@ -78,7 +87,10 @@ const handleRelease = () => {
                         const ingredientObj = ingredients.find(i => i.id === filteredJointObj.ingredientId)
                         console.log(filteredJointObj)
                       return (
-                        <><li>{filteredJointObj?.amount} {ingredientObj?.ingredientName}</li>  <button onClick={handleIngredientRelease}>Remove Ingredient</button></>
+                        <><li>{filteredJointObj?.amount} {ingredientObj?.ingredientName} <IconButton aria-label="delete" size="small" >
+                        <DeleteIcon fontSize="inherit" onClick={ () => handleIngredientRelease(filteredJointObj)} />
+                      </IconButton></li>       
+                  </>
 
                       )
                       })
@@ -87,15 +99,19 @@ const handleRelease = () => {
                     }
                 </ul>
             </div>
-      
+            <Fab color="" size="small" aria-label="edit" style={{margin: "auto 10px auto auto"}} onClick={() => {
+    navigate(`/recipes/edit/${recipe.id}`)
+}}>
+        <EditIcon />
+      </Fab>
+            <button className="madeIt btn btn-primary"  onClick={handleClickSaveMenuItem}>Make it!</button>
       <h3 className="recipe__ingredientsLabel">Instructions</h3>
 
  <div className="recipe__instructions">{recipe.recipeInstructions}</div>
- <button onClick={() => {
-    navigate(`/recipes/edit/${recipe.id}`)
-}}>Add Instructions</button>
-      <button onClick={handleRelease}>Remove Recipe</button>
-      <button className="madeIt"  onClick={handleClickSaveMenuItem}>Make it!</button>
+
+      <IconButton aria-label="delete" size="small" onClick={handleRelease}>
+                        <DeleteIcon />
+                      </IconButton>
 
 
 

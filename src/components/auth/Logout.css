@@ -1,6 +1,9 @@
 #logout-button {
-    margin: 6.5em 1em auto auto;
-    float:right
+    float:right;
+    margin-right: 1em;
+    justify-content: baseline;
+    background-color:#e76f51;
+    color:#264653
    
 }
 .h1, h1 {

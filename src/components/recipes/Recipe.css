@@ -8,6 +8,46 @@
       flex-basis: 28%;
       margin: 1em;
       padding: 1em;
-      border: 1px solid goldenrod;
+      color: #264653;
+      border: 1px solid #f4a261;
+      background-color: lightyellow;
+  }
+
+ 
+    textarea {
+       border-radius: 5px;
+       border-width: .1px;
+      }
+
+      input{
+          width: 500px;
+      }
+  
+
+  .recipeIngredient{
+      background-color: #264653;
+      color: lightyellow;
+  }
+
+  .deleteIngredient {
+      border-radius: 50%;
+       color: black;
+      height: 25px;
+      width: 25px;
+      margin: auto;
+    vertical-align: middle;
+  }
+
+  .details {
+      float: right;
   }
   
+  .recipeSearch{
+      display: flex;
+      justify-content: center;
+  }
+
+  .recipeForm{
+    padding: 5px;
+
+  }

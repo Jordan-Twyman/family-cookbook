@@ -5,13 +5,13 @@
 --------------------------------------------------------------*/
 body,
 button,
-input,
-select,
-textarea {
-  color: #404040;
+select {
+  color: white;
   font-family: "Comfortaa", Arial, sans-serif;
   font-size: 14px;
   line-height: 1.5;
+  background-color:#e9c46a;
+  color: #264653;
 }
 
 h1,
@@ -22,12 +22,13 @@ h5,
 h6 {
   font-family: "Patua One", serif;
   letter-spacing: 2px;
+  color: #264653;
 }
 
 p {
   margin-bottom: 1.5em;
-  color: #d6fcff;
-  color: darkslateblue;
+  color: #264653;
+  color: #264653;
 }
 
 strong {
@@ -48,3 +49,13 @@ aside {
   justify-content: space-evenly;
   align-items: center;
 }
+
+img {
+  display: inline-block;
+  max-width:500px;
+  height:auto;
+  }
+
+  .imageContainer{
+  text-align: center;
+  }

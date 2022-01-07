@@ -65,8 +65,8 @@ export const RecipeForm = () => {
             }
         }, [])
  return (
-        <form className="eventForm">
-             {recipeId ? <h2 className="eventForm__title">Edit Recipe</h2>: <h2 className="eventForm__title">New Recipe</h2>} 
+        <form className="recipeForm">
+             {recipeId ? <h2 className="recipeForm__title">Edit Recipe</h2>: <h2 className="recipeForm__title">New Recipe</h2>} 
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="name">Recipe name:</label>
@@ -81,11 +81,11 @@ export const RecipeForm = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="instructions">Instructions: </label>
-                    <input type="text" id="recipeInstructions" className="form-control" onChange={handleControlledInputChange} defaultValue={recipe.recipeInstructions}/>
+                    <label htmlFor="instructions">Instructions: </label><br></br>
+                    <textarea type="text" id="recipeInstructions" rows="5" cols="269" className="input-group input-lg"  onChange={handleControlledInputChange} defaultValue={recipe.recipeInstructions}></textarea>
                 </div>
             </fieldset>
-            <button id="saveEvent-button"className="btn btn-secondary" disabled={isLoading}
+            <button id="saveRecipe-button"className="btn btn-secondary" disabled={isLoading}
               onClick={e => {
                   e.preventDefault()
                   handleClickSaveEvent()}
