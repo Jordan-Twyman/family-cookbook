@@ -27,10 +27,7 @@ export const MenuList = () => {
     
   }, [])
 
-//   const handleCheckbox = (e) => {
-//     e.preventDefault();
-//     madeIt(filteredJointObj?.id, true).then(getMenu)
-// }
+
 
   return (
     <>

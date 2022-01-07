@@ -10,7 +10,7 @@ import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart, faHeartBroken } from '@fortawesome/free-solid-svg-icons'
+
 
 
 
@@ -48,7 +48,7 @@ export const RecipeCard = ({ recipe, dinner }) =>  {
       }, [])
 
          const handleFavorites = (e) => {
-     rating(recipe?.id, value).then(getRecipes)
+     rating(recipe.id, value).then(getRecipes)
  }
 
 
@@ -63,7 +63,6 @@ export const RecipeCard = ({ recipe, dinner }) =>  {
 
 return (
     <section className="recipe">
-        <FontAwesomeIcon icon={faHeart} /> 
         <h2 className="recipe__name" id="recipeId"  >
                 {recipe.recipeName}
             

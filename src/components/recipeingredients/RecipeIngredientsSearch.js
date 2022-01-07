@@ -68,8 +68,7 @@ const [ chosenIngredient, setChosenIngredient ] = useState ("")
 
 
   const handleClickSaveIngredient = () => {
-    if ( recipeIngredient.ingredientId === undefined ){window.alert("No ingredient selected")
-  }else{
+  
   
             //resetting both states
          
@@ -86,7 +85,7 @@ const [ chosenIngredient, setChosenIngredient ] = useState ("")
                 amount:""  
               })
             })
-           } }
+           } 
            
            //reloading the list with the new list, message edit state set back to 0, message needs to ga back to empty
 
