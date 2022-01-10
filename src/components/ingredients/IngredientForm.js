@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { IngredientContext } from "./IngredientProvider"
 import "./Ingredient.css"
 import { useNavigate, useParams } from 'react-router-dom';
+import { Modal, Button } from "react-bootstrap";
+
 
 export const IngredientForm = () => {
     const { addIngredient,getIngredientById,updateIngredient } = useContext(IngredientContext)
@@ -13,6 +15,11 @@ export const IngredientForm = () => {
     });
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
+
+    const [show, setShow] = useState(false);
+  
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
   
     const {ingredientId} = useParams();
     
@@ -40,7 +47,6 @@ export const IngredientForm = () => {
                             userId:+localStorage.activeUser,
                             id:parseInt(ingredient.id),
                             ingredientName:ingredient.ingredientName,
-                            completed:false
                             
                             })
                         //  .then(()=> navigate(`/recipes/detail/${recipe.id}`))
@@ -49,18 +55,9 @@ export const IngredientForm = () => {
                         addIngredient({
                             userId:+localStorage.activeUser,
                             ingredientName:ingredient.ingredientName,
-                            completed:false
                          
                         })  
-                        .then(() => {
-
-                            setIngredient({
-                              ingredientName:"",
-                            })
-                          })
-                        // .then(()=> navigate(`/recipes/detail/${recipe.id}`))
-
-                        // .then(()=> navigate("/ingredients/"))
+                   .then(handleClose)
                     }
       }
     }
@@ -75,7 +72,17 @@ export const IngredientForm = () => {
             }
         }, [])
  return (
-        <form className="eventForm">
+
+<>
+    <Button style={{margin:"5px 50px"}} variant="primary" onClick={handleShow}>
+    New Ingredient
+  </Button>
+
+  <Modal show={show} onHide={handleClose}>
+    <Modal.Header closeButton>
+      <Modal.Title>Add a new ingredient</Modal.Title>
+    </Modal.Header>
+    <Modal.Body> <form className="eventForm">
              {ingredientId ? <h2 className="eventForm__title">Edit Ingredient</h2>: <h2 className="eventForm__title"> </h2>} 
             <fieldset>
                 <div className="form-group">
@@ -89,8 +96,21 @@ export const IngredientForm = () => {
                   handleClickSaveEvent()
                   }
                   }>
-              {ingredientId ? <>Update Ingredient</> : <>New Ingredient</>}
+              {ingredientId ? <>Update Ingredient</> : <>Add</>}
             </button>
-        </form>
+        </form>   </Modal.Body>
+    <Modal.Footer>
+      <Button variant="secondary" onClick={handleClose}>
+        Close
+      </Button>
+       <Button variant="primary" onClick={handleClickSaveEvent}>
+        Save
+      </Button> 
+    </Modal.Footer>
+  </Modal>
+  </>
+
+
+       
       )
   }

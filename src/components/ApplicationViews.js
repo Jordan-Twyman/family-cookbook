@@ -21,6 +21,7 @@ import {  MenuProvider } from "./menu/MenuProvider";
 export const ApplicationViews = () => {
 
     return (
+        <>
         <MenuProvider>
         <RecipeIngredientsProvider>
         <IngredientProvider>
@@ -31,14 +32,16 @@ export const ApplicationViews = () => {
             <Route path ="/recipes/create" element={<RecipeForm />}/>
             <Route path="/recipes/detail/:recipeId/*" element={<div className="detailsBox"> <RecipeDetail /><aside> <RecipeIngredientsSearch /></aside></div>} />
             <Route path="recipes/edit/:recipeId/*" element={<RecipeForm />} />
-            <Route path ="/ingredients/*" element={<IngredientList />}/>
             {/* <Route path ="/ingredients/create" element={<IngredientForm />}/>
             <Route path="ingredients/edit/:ingredientId/*" element={<IngredientForm />} /> */}
-            <Route path ="/menu/*" element={<MenuList />}/>
+            <Route path ="/menu/*" element={<><MenuList /> <IngredientList /></>}/>
         </Routes>
         </RecipeProvider>
         </IngredientProvider>
         </RecipeIngredientsProvider>
         </MenuProvider>
+                   <div className="imageContainer"> <img className="navLogo" src={require('./icon.png')}  alt="logo" /></div>
+                    </>
+
     )
 }

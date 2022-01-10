@@ -2,6 +2,12 @@ import { Button, Modal } from "react-bootstrap";
 import React, { useContext, useState } from "react";
 import { RecipeContext } from "./RecipeProvider";
 import { useNavigate } from "react-router-dom";
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
+import { teal } from '@mui/material/colors';
+
+const color = teal[500];
+
 
 
 
@@ -44,18 +50,28 @@ export const Example = () => {
                             userId:+localStorage.activeUser,
                             recipeName:recipe.recipeName,
                             recipeDetails:recipe.recipeDetails,
-                            recipeInstructions:recipe.recipeInstructions
+                            recipeInstructions:"Click the pencil to add instructions and/or update recipe name and description!"
                         })
+
                         .then(handleClose)
+
+                        .then(r => r.json())
+
+                        .then( r => navigate(`/recipes/detail/${r.id}`))
                     }
       }
     
        
     return (
       <>
-        <Button variant="primary" onClick={handleShow}>
+        {/* <Button variant="primary" onClick={handleShow}>
           New Recipe
-        </Button>
+        </Button> */}
+        <Fab  color="" style={{margin:"auto 10px", color:"black"}} aria-label="add" className="addRecipe" onClick={e => {
+          e.preventDefault() 
+          handleShow()}}>
+  <AddIcon />
+</Fab>
   
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>

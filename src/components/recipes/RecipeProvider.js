@@ -47,9 +47,20 @@ export const RecipeProvider = (props) => {
           .then(getRecipes)
       }
 
+           const rating = (recipeId, rating) => {
+         return fetch(`http://localhost:8088/recipes/${recipeId}`, {
+             method: "PATCH",
+             headers: {'Content-type': 'application/json'},
+      body: JSON.stringify({
+            rating: rating,
+             }),
+         }).then(getRecipes)
+        //.then(response => response.json())
+     } 
+
     return (
         <RecipeContext.Provider value={{
-            recipes, getRecipes, addRecipe, updateRecipe,getRecipeById, searchTerms, setSearchTerms, removeRecipe
+            recipes, getRecipes, addRecipe, updateRecipe,getRecipeById, searchTerms, setSearchTerms, removeRecipe, rating
         }}>
             {props.children}
         </RecipeContext.Provider>

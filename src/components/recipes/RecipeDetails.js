@@ -5,6 +5,12 @@ import { useParams, useNavigate } from "react-router-dom"
 import { IngredientContext } from "../ingredients/IngredientProvider"
 import { RecipeIngredientContext } from "../recipeingredients/RecipeIngredientsProvider"
 import { MenuContext } from "../menu/MenuProvider"
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
+import Fab from '@mui/material/Fab';
+import EditIcon from '@mui/icons-material/Edit';
+
+
 
 
 
@@ -12,11 +18,15 @@ export const RecipeDetail = () => {
   const { getRecipeById, removeRecipe } = useContext(RecipeContext)
   const { getMenu, madeIt, addMenu } = useContext(MenuContext)
   const { getIngredients, ingredients } = useContext(IngredientContext)
-  const { getRecipeIngredients, recipeIngredients } = useContext(RecipeIngredientContext)
+  const { getRecipeIngredients, recipeIngredients, removeRecipeIngredient, getRecipeIngredientById } = useContext(RecipeIngredientContext)
 
 	const [recipe, setRecipe] = useState({})
+  const [recipeIngredient, setRecipeIngredient] = useState({})
+
 
 	const {recipeId} = useParams();
+  const {recipeIngredientId} = useParams();
+
 	const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,8 +37,11 @@ export const RecipeDetail = () => {
     getRecipeById(recipeId)
     .then((response) => {
       setRecipe(response)
+      setRecipeIngredient(response)
     })
-  })}, [])
+
+  })
+}, [])
 
 
 const handleRelease = () => {
@@ -36,6 +49,10 @@ const handleRelease = () => {
       .then(() => {
         navigate("/recipes")
       })
+  }
+  const handleIngredientRelease = (taco) => {
+    removeRecipeIngredient(taco.id)
+      
   }
 
   const handleClickSaveMenuItem = () => {
@@ -58,8 +75,12 @@ const handleRelease = () => {
 
   return (
     <section className="recipe">
-      <h1 className="recipe__name">{recipe.recipeName}</h1>
-      <h3 className="recipe__detailsLabel">Description</h3>
+      <h1 className="recipe__name">{recipe.recipeName}        <Fab color="" size="small" aria-label="edit" style={{margin: "auto 10px auto auto"}} onClick={() => {
+        navigate(`/recipes/edit/${recipe.id}`)
+        }}>
+        <EditIcon />
+      </Fab></h1>
+      <h3 className="recipe__detailsLabel">Description </h3>
       <div className="recipe__details">{recipe.recipeDetails}</div>
       <h3 className="recipe__ingredientsLabel">Ingredients</h3>
 
@@ -70,7 +91,11 @@ const handleRelease = () => {
                         const ingredientObj = ingredients.find(i => i.id === filteredJointObj.ingredientId)
                         console.log(filteredJointObj)
                       return (
-                        <li>{filteredJointObj?.amount} {ingredientObj?.ingredientName}</li>
+                        <><li>{filteredJointObj?.amount} {ingredientObj?.ingredientName} <IconButton aria-label="delete" size="small" >
+                        <DeleteIcon fontSize="inherit" onClick={ () => handleIngredientRelease(filteredJointObj)} />
+                      </IconButton></li>       
+                  </>
+
                       )
                       })
 
@@ -78,15 +103,14 @@ const handleRelease = () => {
                     }
                 </ul>
             </div>
-      
       <h3 className="recipe__ingredientsLabel">Instructions</h3>
 
  <div className="recipe__instructions">{recipe.recipeInstructions}</div>
- <button onClick={() => {
-    navigate(`/recipes/edit/${recipe.id}`)
-}}>Add Instructions</button>
-      <button onClick={handleRelease}>Remove Recipe</button>
-      <button className="madeIt"  onClick={handleClickSaveMenuItem}>Make it!</button>
+
+      <IconButton aria-label="delete" size="small" onClick={handleRelease}>
+                        <DeleteIcon />
+                      </IconButton>                <button style={{float:"right"}} className="madeIt btn btn-secondary"  onClick={handleClickSaveMenuItem}>Make it!</button>
+
 
 
 
