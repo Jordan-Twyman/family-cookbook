@@ -50,9 +50,14 @@ export const Example = () => {
                             userId:+localStorage.activeUser,
                             recipeName:recipe.recipeName,
                             recipeDetails:recipe.recipeDetails,
-                            recipeInstructions:recipe.recipeInstructions
+                            recipeInstructions:"Click the pencil to add instructions and/or update recipe name and description!"
                         })
+
                         .then(handleClose)
+
+                        .then(r => r.json())
+
+                        .then( r => navigate(`/recipes/detail/${r.id}`))
                     }
       }
     

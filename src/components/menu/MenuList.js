@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router"
 import { RecipeContext } from "../recipes/RecipeProvider"
 import { MenuCard } from "./MenuCard"
 import { MenuContext } from "./MenuProvider"
+import { Tooltip } from "react-bootstrap"
 
 
 
@@ -31,23 +32,22 @@ export const MenuList = () => {
 
   return (
     <>
-      <div className="ingredientsContainer">
-        <h2>Menu</h2>
-        <small>Check <input type="checkbox"/> to remove from menu</small><br></br>
+      <div className="menuContainer">
+        <h2 className="menuHeader">Menu</h2>
         
-        <div>
+        <div className="menuRecipes recipe">
                 
                     {
-                      menus.filter(singleJointObj => singleJointObj.madeIt === false ).map(filteredJointObj => {
+                        menus.filter(singleJointObj => singleJointObj.madeIt === false ).map(filteredJointObj => {
                         const recipeObj = recipes.find(r => r.id === filteredJointObj.recipeId)
                         
-    const handleCheckbox = (e) => {
-    e.preventDefault();
-    madeIt(filteredJointObj?.id, true).then(getMenu)
+                        const handleCheckbox = (e) => {
+                        e.preventDefault();
+                        madeIt(filteredJointObj?.id, true).then(getMenu)
 }
                         console.log(filteredJointObj)
-                      return (
-                       <> <h3> {recipeObj?.recipeName} <input type="checkbox" onClick={handleCheckbox}/></h3>
+                        return (
+                        <> <h3 data-toggle="tooltip" data-placement="top" title="Tooltip on top"> {recipeObj?.recipeName} <input type="checkbox" onClick={handleCheckbox} /></h3>
                         <em>{recipeObj?.recipeDetails}</em>
                         </>
                       )

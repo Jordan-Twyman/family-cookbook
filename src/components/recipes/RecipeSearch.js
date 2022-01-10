@@ -13,7 +13,7 @@ export const RecipeSearch = () => {
       <input type="text"
         className="input--wide"
         onKeyUp={(event) => setSearchTerms(event.target.value)}
-        placeholder="Search for an recipe... " /></big>
+        placeholder="Search for a recipe... " /></big>
     </>
   )
 }

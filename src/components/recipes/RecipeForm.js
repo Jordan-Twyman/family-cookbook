@@ -40,7 +40,8 @@ export const RecipeForm = () => {
                             id:parseInt(recipe.id),
                             recipeName:recipe.recipeName,
                             recipeDetails:recipe.recipeDetails,
-                            recipeInstructions:recipe.recipeInstructions
+                            recipeInstructions:recipe.recipeInstructions,
+                            rating:recipe.rating
                             })
                          .then(()=> navigate(`/recipes/detail/${recipe.id}`))
                     }else{
@@ -48,9 +49,10 @@ export const RecipeForm = () => {
                             userId:+localStorage.activeUser,
                             recipeName:recipe.recipeName,
                             recipeDetails:recipe.recipeDetails,
-                            recipeInstructions:recipe.recipeInstructions
+                            recipeInstructions:recipe.recipeInstructions,
+                            rating:0
                         })
-                        .then(()=> navigate("/recipes/"))
+                       
                     }
       }
     }

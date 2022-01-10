@@ -23,11 +23,15 @@ export const Cookbook = () => {
     );
   } else {
     return (
+      <>
       <Routes>
         <Route path="/" element={<Navigate to="login" />} />
         <Route path="/login" element={<Login setLoggedin={changeState} />} />
         <Route path="/register" element={<Register setLoggedin={changeState} />} />
       </Routes>
+      <div className="imageContainer"> <img className="navLogo" src={require('./icon.png')}  alt="logo" /></div>
+      </>
+
     );
   }
 };

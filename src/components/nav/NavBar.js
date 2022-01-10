@@ -29,13 +29,13 @@ class NavBar extends Component {
                     <Link className="nav-link" to="/"><HomeIcon className="nav-link" fontSize="large" sx={{ color: yellow[100] }} /></Link>
                 </li>
                 <li className="nav-item">
-                    <Link className="nav-link" to="/recipes" ><div className="nav-link">Recipes</div></Link>
+                    <Link className="nav-link" to="/recipes" ><div className="nav-link">My Recipes</div></Link>
                 </li>
                 {/* <li className="nav-item">
                     <Link className="nav-link" to="/ingredients">Grocery List</Link>
                 </li>  */}
                 <li className="nav-item">
-                    <Link className="nav-link" to="/menu"><div className="nav-link">Menu</div></Link>
+                    <Link className="nav-link" to="/menu"><div className="nav-link">Dinner Menu</div></Link>
                 </li>    
                 </div>
                 </ul>

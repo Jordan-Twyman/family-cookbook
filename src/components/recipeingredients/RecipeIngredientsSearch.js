@@ -78,13 +78,8 @@ const [ chosenIngredient, setChosenIngredient ] = useState ("")
               recipeId:+recipeId,
                }
             )
-            .then(() => {
+         
 
-              setRecipeIngredient({
-                ingredientId:0,
-                amount:""  
-              })
-            })
            } 
            
            //reloading the list with the new list, message edit state set back to 0, message needs to ga back to empty
@@ -132,35 +127,21 @@ const [ chosenIngredient, setChosenIngredient ] = useState ("")
       
             <fieldset>
         <div className="form-group">
-          <label htmlFor="ingredientAmount">amount:</label>
-          <input type="text" id="amount" name="amount" onChange={handleControlledInputChange} value={recipeIngredient.amount} required autoFocus className="form-control" />
-        </div>
-      </fieldset>
-      <Fab color="" style={{margin:"auto auto 10px 90px"}} aria-label="add" onClick={e => {
+        <div><Fab color="" size="small" style={{margin:"auto auto 10px 90px"}} aria-label="add" onClick={e => {
           e.preventDefault() 
           handleClickSaveIngredient()}}>
   <AddIcon />
 </Fab>
+</div>
+          <label htmlFor="ingredientAmount">amount:</label>
+          <input type="text" id="amount" name="amount" onChange={handleControlledInputChange} value={recipeIngredient.amount} required autoFocus className="form-control" /> 
+      
+        </div>
+      </fieldset>
+ 
 
 <>
-        <br></br><Button style={{margin:"5px 50px"}} variant="primary" onClick={handleShow}>
-          New Ingredient
-        </Button>
-  
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Add a new ingredient</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>   <IngredientForm /></Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-            {/* <Button variant="primary" onClick={handleClickSaveEvent}>
-              Save
-            </Button> */}
-          </Modal.Footer>
-        </Modal>
+        <br></br><IngredientForm />
       </>
     </form>
    

@@ -75,8 +75,12 @@ const handleRelease = () => {
 
   return (
     <section className="recipe">
-      <h1 className="recipe__name">{recipe.recipeName}</h1>
-      <h3 className="recipe__detailsLabel">Description</h3>
+      <h1 className="recipe__name">{recipe.recipeName}        <Fab color="" size="small" aria-label="edit" style={{margin: "auto 10px auto auto"}} onClick={() => {
+        navigate(`/recipes/edit/${recipe.id}`)
+        }}>
+        <EditIcon />
+      </Fab></h1>
+      <h3 className="recipe__detailsLabel">Description </h3>
       <div className="recipe__details">{recipe.recipeDetails}</div>
       <h3 className="recipe__ingredientsLabel">Ingredients</h3>
 
@@ -99,19 +103,14 @@ const handleRelease = () => {
                     }
                 </ul>
             </div>
-            <Fab color="" size="small" aria-label="edit" style={{margin: "auto 10px auto auto"}} onClick={() => {
-    navigate(`/recipes/edit/${recipe.id}`)
-}}>
-        <EditIcon />
-      </Fab>
-            <button className="madeIt btn btn-primary"  onClick={handleClickSaveMenuItem}>Make it!</button>
       <h3 className="recipe__ingredientsLabel">Instructions</h3>
 
  <div className="recipe__instructions">{recipe.recipeInstructions}</div>
 
       <IconButton aria-label="delete" size="small" onClick={handleRelease}>
                         <DeleteIcon />
-                      </IconButton>
+                      </IconButton>                <button style={{float:"right"}} className="madeIt btn btn-secondary"  onClick={handleClickSaveMenuItem}>Make it!</button>
+
 
 
 

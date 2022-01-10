@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./Recipe.css";
-import { Link } from "react-router-dom";
 import { MenuContext } from "../menu/MenuProvider";
 import { RecipeContext } from "./RecipeProvider";
 import * as React from 'react';
@@ -23,15 +22,10 @@ export const RecipeCard = ({ recipe, dinner }) =>  {
     const [value, setValue] = React.useState(2);
     const [hover, setHover] = React.useState(-1);
     const labels = {
-        0.5: '',
         1: '',
-        1.5: '',
         2: '',
-        2.5: '',
         3: '',
-        3.5: '',
         4: '',
-        4.5: '',
         5: '',
       };
     const navigate = useNavigate()
@@ -62,16 +56,19 @@ export const RecipeCard = ({ recipe, dinner }) =>  {
 
 
 return (
+  <>
     <section className="recipe">
         <h2 className="recipe__name" id="recipeId"  >
                 {recipe.recipeName}
             
                         <MenuBookIcon size="large" className="details"  onClick={() => {navigate(`/recipes/detail/${recipe.id}`)}}/>
-</h2> 
+</h2>
+<small style={{float:"right", margin:"-20px -1px auto auto"}}>view</small> <br></br>
             <Rating
+  style={{color:"#f4a261"}}
   name="hover-feedback"
   value={recipe.rating}
-  precision={0.5}
+  precision={1}
   onClick={() => handleFavorites()}
   onChange={(event, newValue) => {
     setValue(newValue);
@@ -82,10 +79,11 @@ return (
   emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
 />
 {value !== null && (
-  <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>
+  <Box sx={{ ml: 1 }}>{labels[hover !== -1 ? hover : value]}</Box>
 )}
    
     </section>
+    </>
     
     )
 }else {

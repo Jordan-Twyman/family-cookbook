@@ -73,6 +73,15 @@ return ingredientObj
 
   return ingredientsForTheWeek
  }
+ 
+
+ let nameOfIngredient = getIngredientsForUsersMenu().map(fi =>{
+  return (
+    fi.ingredientName
+  )})
+
+  let uniqueIngredients = [...new Set(nameOfIngredient)];
+  console.log("this should be an array of ingredients iterated once",uniqueIngredients)
 
 
   //  menus.filter(singleJointObj => singleJointObj.madeIt === false && singleJointObj.userId === +localStorage.activeUser  ).map(anotherJointObj => anotherJointObj.recipeId === recipes.id).map(filteredJointObj => {
@@ -89,9 +98,9 @@ return ingredientObj
 
   return (
   
-      <div className="ingredientsContainer">
-        <h2>Grocery List</h2>
-        <div className="ingredients">
+      <div className="menuIngredientsContainer">
+        <h2>Ingredients Needed</h2>
+        <div className="menuIngredientList">
             {/* {console.log("TaskList: Render", tasks)} */}
             
             {/* {
@@ -99,14 +108,19 @@ return ingredientObj
                 ingredients.map(ingredient => 
                    <IngredientCard key={ingredient.id} ingredient={ingredient} />)
             } */}
-  
+  {uniqueIngredients.map((name, index) => {
+    return (
+      <li key={index}>{name}</li>
+    )
+
+  })}
             
-            {getIngredientsForUsersMenu().map(filteredIngredientObj => {
-            
-              return (
-                <li>{filteredIngredientObj?.ingredientName}</li>
-              )})}
+         
+
         </div>
+
+  
+
       </div>
       
 
