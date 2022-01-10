@@ -47,8 +47,9 @@ export const MenuList = () => {
 }
                         console.log(filteredJointObj)
                         return (
-                        <> <h3 data-toggle="tooltip" data-placement="top" title="Tooltip on top"> {recipeObj?.recipeName} <input type="checkbox" onClick={handleCheckbox} /></h3>
+                        <> <h3> {recipeObj?.recipeName} </h3>
                         <em>{recipeObj?.recipeDetails}</em>
+                        <input type="checkbox" onClick={handleCheckbox} />
                         </>
                       )
                       })

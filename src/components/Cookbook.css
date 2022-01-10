@@ -12,6 +12,7 @@ select {
   line-height: 1.5;
   background-color:#e9c46a;
   color: #264653;
+  height: auto;
 }
 
 h1,
@@ -42,6 +43,8 @@ address {
 .detailsBox {
   display:flex;
   justify-content: space-between;
+  height: 100%;
+  
 }
 aside {
   display:flex;
@@ -52,10 +55,15 @@ aside {
 
 img {
   display: inline-block;
-  max-width:500px;
+  max-width:375px;
   height:auto;
+  position: absolute;
+
   }
 
   .imageContainer{
-  text-align: center;
-  }
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+ }

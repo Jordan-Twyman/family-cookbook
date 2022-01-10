@@ -61,9 +61,9 @@ return (
         <h2 className="recipe__name" id="recipeId"  >
                 {recipe.recipeName}
             
-                        <MenuBookIcon size="large" className="details"  onClick={() => {navigate(`/recipes/detail/${recipe.id}`)}}/>
+                        <MenuBookIcon size="large" className="view"  onClick={() => {navigate(`/recipes/detail/${recipe.id}`)}}/>
 </h2>
-<small style={{float:"right", margin:"-20px -1px auto auto"}}>view</small> <br></br>
+<small style={{float:"right"}}>view</small> <br></br>
             <Rating
   style={{color:"#f4a261"}}
   name="hover-feedback"

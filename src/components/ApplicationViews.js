@@ -30,7 +30,7 @@ export const ApplicationViews = () => {
             {/* <Route path="/*" element={<><DinnerCard />  </>} /> */}
             <Route path ="/recipes/*" element={<><RecipeSearch /><RecipeList /></>}/>
             <Route path ="/recipes/create" element={<RecipeForm />}/>
-            <Route path="/recipes/detail/:recipeId/*" element={<div className="detailsBox"> <RecipeDetail /><aside> <RecipeIngredientsSearch /></aside></div>} />
+            <Route path="/recipes/detail/:recipeId/*" element={<div className="detailsBox"> <div className="recipeDetails"> <RecipeDetail /></div><aside> <RecipeIngredientsSearch /></aside></div>} />
             <Route path="recipes/edit/:recipeId/*" element={<RecipeForm />} />
             {/* <Route path ="/ingredients/create" element={<IngredientForm />}/>
             <Route path="ingredients/edit/:ingredientId/*" element={<IngredientForm />} /> */}

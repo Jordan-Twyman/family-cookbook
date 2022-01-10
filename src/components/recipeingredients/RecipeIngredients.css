@@ -2,10 +2,24 @@
   
   .ingredientList {
       width:auto;
-      height: 250px;
+      height: 25em;
       overflow-y: scroll;
       scrollbar-color: black;
       scrollbar-width: thin;
       border: .5px solid black;
+      
 
   }
+
+  .ingredientSearch{
+    width: 80%;
+    height: auto;
+    margin: 5px;
+  }
+
+  aside{
+    width: 55%;
+  }
+
+  
+ 

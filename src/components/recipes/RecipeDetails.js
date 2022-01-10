@@ -74,7 +74,7 @@ const handleRelease = () => {
 
 
   return (
-    <section className="recipe">
+    <section className="recipe details">
       <h1 className="recipe__name">{recipe.recipeName}        <Fab color="" size="small" aria-label="edit" style={{margin: "auto 10px auto auto"}} onClick={() => {
         navigate(`/recipes/edit/${recipe.id}`)
         }}>
@@ -84,17 +84,17 @@ const handleRelease = () => {
       <div className="recipe__details">{recipe.recipeDetails}</div>
       <h3 className="recipe__ingredientsLabel">Ingredients</h3>
 
-      <div>
-                <ul>
-                    {
+      
+                <ul className="recipeIngredients">
+                    { 
                       recipeIngredients.filter(singleJointObj => singleJointObj.recipeId === recipe.id ).map(filteredJointObj => {
                         const ingredientObj = ingredients.find(i => i.id === filteredJointObj.ingredientId)
                         console.log(filteredJointObj)
                       return (
-                        <><li>{filteredJointObj?.amount} {ingredientObj?.ingredientName} <IconButton aria-label="delete" size="small" >
-                        <DeleteIcon fontSize="inherit" onClick={ () => handleIngredientRelease(filteredJointObj)} />
-                      </IconButton></li>       
-                  </>
+                        ingredientObj?.ingredientName === "" ? <div>"Please add ya damn ingredients first"</div> :<li className="ingredientsAmt" key={ingredients.id}>{filteredJointObj?.amount} {ingredientObj?.ingredientName} <IconButton aria-label="delete" size="small" onClick={ () => handleIngredientRelease(filteredJointObj)} >
+                        <DeleteIcon fontSize="inherit"  />
+                      </IconButton>       </li>
+                  
 
                       )
                       })
@@ -102,7 +102,7 @@ const handleRelease = () => {
                        
                     }
                 </ul>
-            </div>
+           
       <h3 className="recipe__ingredientsLabel">Instructions</h3>
 
  <div className="recipe__instructions">{recipe.recipeInstructions}</div>
