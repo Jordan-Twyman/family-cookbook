@@ -103,14 +103,14 @@ const [ chosenIngredient, setChosenIngredient ] = useState ("")
     <>
     
     <div className="ingredientSearch recipe">
-    <h2 className="recipeIngredientForm__title">Add Ingredients</h2>
+    <h2 className="recipeIngredientForm__title">Ingredients List</h2>
       <div className="searchContainer"> 
       
-      <SearchIcon /><input  
+      <SearchIcon className="searchy" /><input  
       type="text"
         className="input--wide ingredientSearch"
         onKeyUp={(event) => setSearchTerms(event.target.value)}
-        placeholder= {chosenIngredient.ingredientName} /> 
+        placeholder= { chosenIngredient.ingredientName} />
         <div className="ingredientList"> 
         
 

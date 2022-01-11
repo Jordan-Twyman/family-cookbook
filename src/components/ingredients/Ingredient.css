@@ -9,3 +9,7 @@
     flex-flow: column-reverse wrap;
     justify-content: space-evenly;
 }
+
+.grocery {
+    font-weight: bold;
+}

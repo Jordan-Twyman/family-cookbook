@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react"
-import { useNavigate } from "react-router"
+import { useNavigate, useParams } from "react-router"
 import { IngredientContext } from "./IngredientProvider"
 import { IngredientCard } from "./IngredientCard"
 import "./Ingredient.css"
@@ -7,6 +7,8 @@ import { IngredientForm } from "./IngredientForm"
 import { MenuContext } from "../menu/MenuProvider"
 import { RecipeIngredientContext } from "../recipeingredients/RecipeIngredientsProvider"
 import { RecipeContext } from "../recipes/RecipeProvider"
+import Fab from '@mui/material/Fab';
+import EditIcon from '@mui/icons-material/Edit';
 
 
 
@@ -14,7 +16,7 @@ import { RecipeContext } from "../recipes/RecipeProvider"
 
 
 export const IngredientList = () => {
-  const { ingredients, getIngredients } = useContext(IngredientContext)
+  const { ingredients, getIngredients, getIngredientById } = useContext(IngredientContext)
   const { recipeIngredients, getRecipeIngredients } = useContext(RecipeIngredientContext)
   const { menus, getMenu } = useContext(MenuContext)
   const { recipes, getRecipes } = useContext(RecipeContext)
@@ -92,15 +94,18 @@ return ingredientObj
   //    )
   //    })
 
-
+  
+  // console.log(occurrences)
+  
 
  
 
   return (
   
       <div className="menuIngredientsContainer">
-        <h2>Ingredients Needed</h2>
-        <div className="menuIngredientList">
+        
+        <div className="menuIngredientList recipe">
+        <h2 className="grocery">Shopping List</h2>
             {/* {console.log("TaskList: Render", tasks)} */}
             
             {/* {
@@ -108,12 +113,20 @@ return ingredientObj
                 ingredients.map(ingredient => 
                    <IngredientCard key={ingredient.id} ingredient={ingredient} />)
             } */}
+
+  
   {uniqueIngredients.map((name, index) => {
+        
+    const occurrences = nameOfIngredient.reduce((acc, curr) => {
+      return acc[curr] ? ++acc[curr] : acc[curr] = 1, acc
+    }, {});
+    console.log("this should be the number of times an ingredient will be used",occurrences)
     return (
-      <li key={index}>{name}</li>
+      
+      <li key={index}> {name} x {occurrences[name]}</li>
     )
 
-  })}
+})}
             
          
 

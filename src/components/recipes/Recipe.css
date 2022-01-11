@@ -3,6 +3,13 @@
     flex-wrap: wrap;
     justify-content: space-between;
   }
+
+  .recipeHeader{
+
+    color: #264653;
+    text-align: center;
+    font-weight: bold;
+  }
   
   .recipe {
       flex-basis: 28%;
@@ -14,19 +21,16 @@
       height: 95.7%;
       font-size: large;
       width: auto;
+      border-radius: 5px;
       
   }
 
   .recipeIngredients{
-      display: flex;
-      flex-wrap: wrap;
-    justify-content: space-between;
+      display: grid;
+      grid-template-columns: auto;
   }
 
-  .ingredientsAmt{
-    margin: 10px;
 
-  }
 
   .ingredientSearch{
       display: flex;
@@ -83,4 +87,9 @@
       width:100%;
       display: table;
       justify-content: space-evenly;
+  }
+
+
+  .detailView {
+    
   }

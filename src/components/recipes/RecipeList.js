@@ -31,7 +31,6 @@ export const RecipeList = ({}) => {
 
     return (
         <>
-            <h2>Recipes</h2>
 
             
             <Example/>

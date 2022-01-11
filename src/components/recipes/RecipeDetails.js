@@ -65,13 +65,13 @@ const handleRelease = () => {
       userId:+localStorage.activeUser
        }
     ).then(() => {
-      navigate("/menu")
+      navigate("/")
     })
     
 
       }
 
-
+       
 
   return (
     <section className="recipe details">
@@ -91,7 +91,7 @@ const handleRelease = () => {
                         const ingredientObj = ingredients.find(i => i.id === filteredJointObj.ingredientId)
                         console.log(filteredJointObj)
                       return (
-                        ingredientObj?.ingredientName === "" ? <div>"Please add ya damn ingredients first"</div> :<li className="ingredientsAmt" key={ingredients.id}>{filteredJointObj?.amount} {ingredientObj?.ingredientName} <IconButton aria-label="delete" size="small" onClick={ () => handleIngredientRelease(filteredJointObj)} >
+                        filteredJointObj.ingredientId === 0 ? <div>"Please add ya damn ingredients first"</div> :<li className="ingredientsAmt" key={ingredients.id}>{filteredJointObj?.amount} {ingredientObj?.ingredientName} <IconButton aria-label="delete" size="small" onClick={ () => handleIngredientRelease(filteredJointObj)} >
                         <DeleteIcon fontSize="inherit"  />
                       </IconButton>       </li>
                   
