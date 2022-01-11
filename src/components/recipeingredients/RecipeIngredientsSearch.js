@@ -101,15 +101,17 @@ const [ chosenIngredient, setChosenIngredient ] = useState ("")
 
   return (
     <>
-    <div className="recipe">
-    <h2 className="recipeIngredientForm__title">Add Ingredients</h2>
+    
+    <div className="ingredientSearch recipe">
+    <h2 className="recipeIngredientForm__title">Ingredients List</h2>
       <div className="searchContainer"> 
       
-      <SearchIcon/><input  type="text"
+      <SearchIcon className="searchy" /><input  
+      type="text"
         className="input--wide ingredientSearch"
-        style={{width:"215px", margin:"auto auto 5px auto"}}
         onKeyUp={(event) => setSearchTerms(event.target.value)}
-        placeholder={chosenIngredient.ingredientName} /><div className="ingredientList"> 
+        placeholder= { chosenIngredient.ingredientName} />
+        <div className="ingredientList"> 
         
 
      
@@ -122,17 +124,18 @@ const [ chosenIngredient, setChosenIngredient ] = useState ("")
         </div>
 
           
-            <form className="recipeIngredientForm form-group">
-      
-      
-            <fieldset>
-        <div className="form-group">
-        <div><Fab color="" size="small" style={{margin:"auto auto 10px 90px"}} aria-label="add" onClick={e => {
+            
+        <div><Fab color="" size="small" aria-label="add" onClick={e => {
           e.preventDefault() 
           handleClickSaveIngredient()}}>
   <AddIcon />
 </Fab>
 </div>
+<form className="recipeIngredientForm form-group">
+      
+      
+            <fieldset>
+        <div className="form-group">
           <label htmlFor="ingredientAmount">amount:</label>
           <input type="text" id="amount" name="amount" onChange={handleControlledInputChange} value={recipeIngredient.amount} required autoFocus className="form-control" /> 
       

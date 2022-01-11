@@ -2,7 +2,7 @@ import React from "react";
 
 export const Home = () => (
     <>
-        <h2>Eating In</h2>
-        <small>What's for dinner?</small>
+        <big className="home1">What's for dinner? </big><br></br>
+        <em className="home2">Add any recipe from your cookbook, to your menu and see what ingredients you will need!</em>
     </>
 )

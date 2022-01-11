@@ -5,15 +5,9 @@ import "./NavBar.css"
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import { yellow } from '@mui/material/colors';
-import SvgIcon from '@mui/material/SvgIcon';
+import FoodBankIcon from '@mui/icons-material/FoodBank';
 
-function HomeIcon(props) {
-    return (
-      <SvgIcon {...props}>
-        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-      </SvgIcon>
-    );
-  }
+
 
 class NavBar extends Component {
     render () {
@@ -26,7 +20,7 @@ class NavBar extends Component {
 </div>
 <div className="navContainer">
                 <li className="nav-item">
-                    <Link className="nav-link" to="/"><HomeIcon className="nav-link" fontSize="large" sx={{ color: yellow[100] }} /></Link>
+                    <Link className="nav-link" to="/"><FoodBankIcon className="nav-link" fontSize="large" sx={{ color: yellow[100] }} /></Link>
                 </li>
                 <li className="nav-item">
                     <Link className="nav-link" to="/recipes" ><div className="nav-link">My Recipes</div></Link>
@@ -35,7 +29,7 @@ class NavBar extends Component {
                     <Link className="nav-link" to="/ingredients">Grocery List</Link>
                 </li>  */}
                 <li className="nav-item">
-                    <Link className="nav-link" to="/menu"><div className="nav-link">Dinner Menu</div></Link>
+                    <Link className="nav-link" to="/menu"><div className="nav-link">Shopping List</div></Link>
                 </li>    
                 </div>
                 </ul>

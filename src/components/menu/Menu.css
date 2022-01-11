@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
+
+.menuHeader {
+    font-family: 'Allura', cursive;
+    text-align: center;
+    font-weight:bolder;
+    border-bottom:2px solid #e76f51;
+  }
+
+  .menuAdd {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    
+  }
+ .menuRecipes{
+     display:flex;
+     flex-flow: column;
+     height:auto;
+ }
+
+ .menuCheck {
+     /* float: left; */
+     width: 1%;
+     margin: 5px;
+     /* justify-content: flex-start; */
+ }
+ 
+
+ .favList {
+     display: flex;
+     flex-flow: column nowrap;
+     overflow-y: scroll;
+     height: 500px;
+     background-color: #264653;
+
+ }
+
+
+ .footerModal {
+height: 60px;
+justify-content: center; }
+
+ .header {
+     margin-left: 25%;
+ }

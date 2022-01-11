@@ -74,8 +74,8 @@ export const IngredientForm = () => {
  return (
 
 <>
-    <Button style={{margin:"5px 50px"}} variant="primary" onClick={handleShow}>
-    New Ingredient
+    <Button className="ingredientAdd" variant="secondary" onClick={handleShow}>
+    Add New Ingredient
   </Button>
 
   <Modal show={show} onHide={handleClose}>

@@ -8,6 +8,8 @@ export const RecipeSearch = () => {
 
   return (
     <>
+                <h2 className="recipeHeader">My Recipes</h2>
+
     <big className="recipeSearch">
       <SearchIcon />
       <input type="text"

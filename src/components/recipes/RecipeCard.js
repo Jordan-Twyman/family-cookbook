@@ -60,10 +60,11 @@ return (
     <section className="recipe">
         <h2 className="recipe__name" id="recipeId"  >
                 {recipe.recipeName}
-            
-                        <MenuBookIcon size="large" className="details"  onClick={() => {navigate(`/recipes/detail/${recipe.id}`)}}/>
+                
 </h2>
-<small style={{float:"right", margin:"-20px -1px auto auto"}}>view</small> <br></br>
+
+<em>{recipe.recipeDetails}</em>
+<div className="rating">
             <Rating
   style={{color:"#f4a261"}}
   name="hover-feedback"
@@ -81,7 +82,12 @@ return (
 {value !== null && (
   <Box sx={{ ml: 1 }}>{labels[hover !== -1 ? hover : value]}</Box>
 )}
-   
+
+
+   </div>
+   <small className="detailView" style={{float:"right"}}>details</small> 
+
+                        <MenuBookIcon size="large" className="view"  onClick={() => {navigate(`/recipes/detail/${recipe.id}`)}}/>
     </section>
     </>
     

@@ -3,15 +3,40 @@
     flex-wrap: wrap;
     justify-content: space-between;
   }
+
+  .recipeHeader{
+
+    color: #264653;
+    text-align: center;
+    font-weight: bold;
+  }
   
   .recipe {
       flex-basis: 28%;
       margin: 1em;
-      padding: 1em;
+      padding: 2em;
       color: #264653;
       border: 1px solid #f4a261;
       background-color: lightyellow;
+      height: 95.7%;
+      font-size: large;
+      width: auto;
+      border-radius: 5px;
+      
   }
+
+  .recipeIngredients{
+      display: grid;
+      grid-template-columns: auto;
+  }
+
+
+
+  .ingredientSearch{
+      display: flex;
+      flex-flow: column nowrap;
+  }
+ 
 
  
     textarea {
@@ -38,16 +63,33 @@
     vertical-align: middle;
   }
 
-  .details {
+  .view {
       float: right;
+  }
+  .detailsBox{
+      height:100%;
+      width: 100%;
+      margin-bottom: 20px;
   }
   
   .recipeSearch{
       display: flex;
       justify-content: center;
+      width: auto;
   }
 
   .recipeForm{
     padding: 5px;
 
+  }
+
+  .recipeDetails{
+      width:100%;
+      display: table;
+      justify-content: space-evenly;
+  }
+
+
+  .detailView {
+    
   }
