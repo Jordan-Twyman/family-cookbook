@@ -11,8 +11,9 @@
 
   .menuAdd {
       text-align: center;
-      width: 10%;
-      margin-left: 45%;
+      height: auto;
+      width: 12%;
+      margin-left: 43%;
       margin-top: 2%;
     
   }
@@ -71,7 +72,5 @@ width: auto;
 }
 
 .menuContainer{
-    display: grid;
-    justify-content: center;
 }
 

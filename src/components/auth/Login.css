@@ -60,11 +60,13 @@ background-position-x: right;
 z-index: 1;
 min-height: 25rem;
 min-width: 45rem;
-background-color: hsla(0,0%,100%,0.40);
+background-color: lightyellow;
 background-blend-mode: overlay;
 background-repeat: no-repeat;
 padding: 5px;
 flex-flow: column wrap;
+border: solid 5px ;
+margin: 10px
 
 }
 
