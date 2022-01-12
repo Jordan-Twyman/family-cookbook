@@ -12,9 +12,11 @@
   }
 
   .ingredientSearch{
-    width: 100%;
+    width: 95%;
     height: auto;
     margin: 5px;
+    justify-content: space-evenly;
+
   }
 
   aside{
@@ -25,6 +27,25 @@
   {
     text-align: center;
   }
+.chosenIngredientContainer{
+  display: flex;
+  flex-direction: column;
+}
+  .chosenIngredient {
+    font-size: 28px;
+    margin-right: 15px;
+  }
 
-  
+
+
+#amount {
+  width: 75%;
+}
+
+.searchBottom {
+  border-bottom: lightyellow groove .1px;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+}
 

@@ -96,9 +96,9 @@ export const MenuList = (menu) => {
 }
                         console.log(filteredJointObj)
                         return (
-                        <>      <h3><input className="menuCheck" type="checkbox" onClick={handleCheckbox} /> {recipeObj?.recipeName} 
+                        <>      <h3 className="menuItemTitle"><input className="menuCheck" type="checkbox" onClick={handleCheckbox} /> {recipeObj?.recipeName} 
                         </h3>
-                        <em>{recipeObj?.recipeDetails}</em>
+                        <em className="menuItemTitle">{recipeObj?.recipeDetails}</em><div className="menuItem"></div>
                         
                         </>
                       )
@@ -109,12 +109,12 @@ export const MenuList = (menu) => {
                 
            
             <Button className="menuAdd" variant="secondary" onClick={handleShow}>
-    Top Rated <StarIcon />
+    Favorites <StarIcon />
   </Button>
 
-  <Modal className="modal" show={show} onHide={handleClose}>
+  <Modal size="lg" centered className="modal" show={show} onHide={handleClose}>
     <Modal.Header closeButton>
-      <Modal.Title className="header">Add a new menu item</Modal.Title>
+      <Modal.Title className="header"> <StarIcon /> 5 Star Recipes</Modal.Title>
     </Modal.Header>
     <Modal.Body className="favList">  
       

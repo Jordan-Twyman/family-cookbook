@@ -5,12 +5,15 @@
     text-align: center;
     font-weight:bolder;
     border-bottom:2px solid #e76f51;
+    font-size: 50px;
+    padding:3px ;
   }
 
   .menuAdd {
-      display: flex;
-      justify-content: center;
       text-align: center;
+      width: 10%;
+      margin-left: 45%;
+      margin-top: 2%;
     
   }
  .menuRecipes{
@@ -28,9 +31,9 @@
  
 
  .favList {
-     display: flex;
-     flex-flow: column nowrap;
-     overflow-y: scroll;
+     display: grid;
+     grid-template-columns: auto auto auto;
+     overflow-x: scroll;
      height: 500px;
      background-color: #264653;
 
@@ -42,5 +45,22 @@ height: 60px;
 justify-content: center; }
 
  .header {
-     margin-left: 25%;
+     margin-left: 35%;
  }
+
+ .modalContent{
+     width: 500px;
+ }
+
+.menuItem {
+    border-bottom:1px groove #e76f51;
+    width: 25%;
+    margin-left: 38%;
+    padding: 10px;
+
+}
+
+.menuItemTitle {
+text-align: center;
+padding: 10px;
+}

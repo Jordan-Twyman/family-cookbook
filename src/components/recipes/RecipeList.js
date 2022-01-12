@@ -3,7 +3,6 @@ import { RecipeContext } from "./RecipeProvider"
 import { RecipeCard } from "./RecipeCard"
 import "./Recipe.css"
 import { useNavigate } from "react-router"
-import { Example } from "./RecipeModalForm"
 
 
 
@@ -33,7 +32,7 @@ export const RecipeList = ({}) => {
         <>
 
             
-            <Example/>
+            
             <div className="recipes">
                 {
                     filteredRecipes.map(recipe => {

@@ -79,6 +79,7 @@ const [ chosenIngredient, setChosenIngredient ] = useState ("")
                }
             )
          
+            .then(window.location.reload())
 
            } 
            
@@ -110,7 +111,7 @@ const [ chosenIngredient, setChosenIngredient ] = useState ("")
       type="text"
         className="input--wide ingredientSearch"
         onKeyUp={(event) => setSearchTerms(event.target.value)}
-        placeholder= { chosenIngredient.ingredientName} />
+        placeholder= "search..." />
         <div className="ingredientList"> 
         
 
@@ -125,15 +126,15 @@ const [ chosenIngredient, setChosenIngredient ] = useState ("")
 
           
             
-        <div><Fab color="" size="small" aria-label="add" onClick={e => {
+     
+<form className="recipeIngredientForm form-group">
+  <div className="chosenIngredientContainer">
+<em className="chosenIngredient">{ chosenIngredient.ingredientName}</em>    <Fab color="" size="small" aria-label="add" onClick={e => {
           e.preventDefault() 
           handleClickSaveIngredient()}}>
   <AddIcon />
 </Fab>
-</div>
-<form className="recipeIngredientForm form-group">
-      
-      
+
             <fieldset>
         <div className="form-group">
           <label htmlFor="ingredientAmount">amount:</label>
@@ -141,10 +142,12 @@ const [ chosenIngredient, setChosenIngredient ] = useState ("")
       
         </div>
       </fieldset>
+      </div>    
  
 
 <>
-        <br></br><IngredientForm />
+<p className="searchBottom">Don't see what you need? Add a new ingredient below!</p>
+      <div className="ingredientFormContainer">  <IngredientForm /></div>
       </>
     </form>
    
