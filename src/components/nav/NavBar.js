@@ -12,7 +12,7 @@ import FoodBankIcon from '@mui/icons-material/FoodBank';
 class NavBar extends Component {
     render () {
         return (
-            <nav className="navbar text-white flex-md-nowrap p-0 shadow">
+            <nav className="navbar text-white flex-md-nowrap p-0 shadow fixed-top">
             <ul className="nav nav-pills nav-fill">
             <div className="main-image-first">
 <p></p>
