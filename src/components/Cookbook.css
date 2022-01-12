@@ -55,7 +55,7 @@ aside {
 
 img {
   display: inline-block;
-  max-width:375px;
+  max-width:500px;
   height:auto;
   position: absolute;
 
@@ -70,11 +70,11 @@ img {
 
  .home1 {
    font-size: xx-large;
-   margin-left: 45%;
-   margin-top: 100px;
+   margin-left: 50%;
+   text-align: center;
  }
 
  .home2 {
    font-size: x-large;
-   margin-left: 33%;
+   margin-left: 38%;
  }

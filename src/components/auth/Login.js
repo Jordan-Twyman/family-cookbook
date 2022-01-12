@@ -40,7 +40,6 @@ export const Login = (props) => {
 
             <section>
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1 className="second"><em>Eating In</em></h1>
                     <h2 className="second">Please sign in</h2>
                     <fieldset>
                         <label htmlFor="inputEmail"> Email address </label>
@@ -51,7 +50,7 @@ export const Login = (props) => {
                             required autoFocus />
                     </fieldset>
                     <fieldset>
-                        <button type="submit">
+                        <button className="btn-secondary" type="submit">
                             Sign in
                         </button>
                     </fieldset>
