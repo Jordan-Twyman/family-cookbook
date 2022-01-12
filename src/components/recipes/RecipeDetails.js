@@ -91,7 +91,7 @@ const handleRelease = () => {
                         const ingredientObj = ingredients.find(i => i.id === filteredJointObj.ingredientId)
                         console.log(filteredJointObj)
                       return (
-                        filteredJointObj.ingredientId === 0 ? <div>"Please add ya damn ingredients first"</div> :<li className="ingredientsAmt" key={ingredients.id}>{filteredJointObj?.amount} {ingredientObj?.ingredientName} <IconButton aria-label="delete" size="small" onClick={ () => handleIngredientRelease(filteredJointObj)} >
+                        filteredJointObj.ingredientId === "" ? <div>"Please add ya damn ingredients first"</div> :<li className="ingredientsAmt" key={ingredients.id}>{filteredJointObj?.amount} {ingredientObj?.ingredientName} <IconButton aria-label="delete" size="small" onClick={ () => handleIngredientRelease(filteredJointObj)} >
                         <DeleteIcon fontSize="inherit"  />
                       </IconButton>       </li>
                   
@@ -103,7 +103,7 @@ const handleRelease = () => {
                     }
                 </ul>
            
-      <h3 className="recipe__ingredientsLabel">Instructions</h3>
+      {recipe.recipeInstructions === "" ? "" :<h3 className="recipe__ingredientsLabel">Instructions</h3>}
 
  <div className="recipe__instructions">{recipe.recipeInstructions}</div>
 

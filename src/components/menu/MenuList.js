@@ -98,7 +98,7 @@ export const MenuList = (menu) => {
                         return (
                         <>      <h3 className="menuItemTitle"><input className="menuCheck" type="checkbox" onClick={handleCheckbox} /> {recipeObj?.recipeName} 
                         </h3>
-                        <em className="menuItemTitle">{recipeObj?.recipeDetails}</em><div className="menuItem"></div>
+                        <p className="menuItemTitle idk"><em>{recipeObj?.recipeDetails}</em></p><div className="menuItem"></div>
                         
                         </>
                       )

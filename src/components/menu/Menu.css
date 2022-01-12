@@ -17,9 +17,11 @@
     
   }
  .menuRecipes{
-     display:flex;
+     display:table;
      flex-flow: column;
      height:auto;
+     margin-left: 15%;
+     
  }
 
  .menuCheck {
@@ -54,13 +56,21 @@ justify-content: center; }
 
 .menuItem {
     border-bottom:1px groove #e76f51;
+    border-radius: 15%;
     width: 25%;
     margin-left: 38%;
-    padding: 10px;
+    padding: 30px 0 0 0;
+
 
 }
 
 .menuItemTitle {
 text-align: center;
-padding: 10px;
+    padding: 30px 0 0 0;
+width: auto;
+}
+
+.menuContainer{
+    display: grid;
+    justify-content: center;
 }

@@ -28,9 +28,9 @@ class NavBar extends Component {
                 {/* <li className="nav-item">
                     <Link className="nav-link" to="/ingredients">Grocery List</Link>
                 </li>  */}
-                <li className="nav-item">
+                {/* <li className="nav-item">
                     <Link className="nav-link" to="/menu"><div className="nav-link">Shopping List</div></Link>
-                </li>    
+                </li>     */}
                 </div>
                 </ul>
                 </nav>      )

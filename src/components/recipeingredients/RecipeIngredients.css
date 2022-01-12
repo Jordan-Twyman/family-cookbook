@@ -16,7 +16,18 @@
     height: auto;
     margin: 5px;
     justify-content: space-evenly;
+    border: #264653 5px solid;
+    display: flex;
 
+  }
+
+  .ingredientSearchInput{
+    justify-content: center;
+    margin: 0 50px 5px 90px;
+  }
+  .searchContainer{
+    justify-content: space-evenly;
+    padding: 5px;
   }
 
   aside{

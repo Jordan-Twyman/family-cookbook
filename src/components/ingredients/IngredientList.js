@@ -118,7 +118,6 @@ return ingredientObj
 
   return (
   
-      <div className="menuIngredientsContainer">
         <div className="menuIngredientList recipe">
         <h2 className="grocery menuHeader">Grocery List</h2>
         
@@ -157,7 +156,6 @@ return ingredientObj
 
   
 
-      </div>
       
 
   )
