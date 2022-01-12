@@ -11,5 +11,28 @@
 }
 
 .grocery {
-    font-weight: bold;
+    font-weight: bolder;
+    
 }
+
+.list{
+    font-size: 22px;
+font-weight: bold;
+border-bottom:.5px dotted #e76f51;
+}
+
+
+
+.groceryChecks {
+    /* float: right; */
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+ }
+
+ 
+
+ #ingredientName {
+     width: 75%;
+ }
+

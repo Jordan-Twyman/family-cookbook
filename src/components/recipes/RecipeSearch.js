@@ -1,6 +1,7 @@
 import React, { useContext } from "react"
 import { RecipeContext } from "./RecipeProvider"
 import SearchIcon from '@mui/icons-material/Search';
+import { Example } from "./RecipeModalForm"
 import "./Recipe.css"
 
 export const RecipeSearch = () => {
@@ -8,7 +9,7 @@ export const RecipeSearch = () => {
 
   return (
     <>
-                <h2 className="recipeHeader">My Recipes</h2>
+                <h2 className="recipeHeader">My Recipes <Example/></h2>
 
     <big className="recipeSearch">
       <SearchIcon />

@@ -9,6 +9,10 @@ import { RecipeIngredientContext } from "../recipeingredients/RecipeIngredientsP
 import { RecipeContext } from "../recipes/RecipeProvider"
 import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
+import * as ReactDOM from "react-dom";
+
+
+
 
 
 
@@ -29,6 +33,18 @@ export const IngredientList = () => {
     getIngredients().then(getMenu).then(getRecipes).then(getRecipeIngredients)
         }
     ,[]);
+    
+    const [checked, setChecked] = React.useState(true);
+
+  const handleClick = () => {
+    setChecked(checked);
+  };
+
+  const handleChange = (event) => {
+    setChecked(event.value);
+  };
+
+  
 
  const getIngredientsForUsersMenu = () => {
   let myIngredients = []
@@ -102,10 +118,11 @@ return ingredientObj
 
   return (
   
-      <div className="menuIngredientsContainer">
-        
         <div className="menuIngredientList recipe">
-        <h2 className="grocery">Shopping List</h2>
+        <h2 className="grocery menuHeader">Grocery List</h2>
+        
+
+        
             {/* {console.log("TaskList: Render", tasks)} */}
             
             {/* {
@@ -122,8 +139,13 @@ return ingredientObj
     }, {});
     console.log("this should be the number of times an ingredient will be used",occurrences)
     return (
+      <ul className="list ">
       
-      <li key={index}> {name} x {occurrences[name]}</li>
+      <li className="ingredientItems" key={index}> {name} {occurrences[name] > 1 ? `x ${occurrences[name]}`: ""}
+      <input className="groceryChecks"
+        type="checkbox"
+      />
+      </li></ul>
     )
 
 })}
@@ -134,11 +156,10 @@ return ingredientObj
 
   
 
-      </div>
       
 
-  )}
-
+  )
+}
   // recipeIngredients.filter(singleJointObj => singleJointObj.recipeId === recipe.id ).map(filteredJointObj => {
   //   const ingredientObj = ingredients.find(i => i.id === filteredJointObj.ingredientId)
   //   console.log(filteredJointObj)
@@ -167,4 +188,3 @@ return ingredientObj
 //   })
 
    
-// }

@@ -68,6 +68,9 @@ const [ chosenIngredient, setChosenIngredient ] = useState ("")
 
 
   const handleClickSaveIngredient = () => {
+
+    if (chosenIngredient.ingredientName === undefined){window.alert("Please select ingredient from search")
+  }else{
   
   
             //resetting both states
@@ -79,8 +82,9 @@ const [ chosenIngredient, setChosenIngredient ] = useState ("")
                }
             )
          
+            .then(window.location.reload())
 
-           } 
+           } }
            
            //reloading the list with the new list, message edit state set back to 0, message needs to ga back to empty
 
@@ -108,9 +112,9 @@ const [ chosenIngredient, setChosenIngredient ] = useState ("")
       
       <SearchIcon className="searchy" /><input  
       type="text"
-        className="input--wide ingredientSearch"
+        className="input--wide ingredientSearchInput"
         onKeyUp={(event) => setSearchTerms(event.target.value)}
-        placeholder= { chosenIngredient.ingredientName} />
+        placeholder= "search..." />
         <div className="ingredientList"> 
         
 
@@ -125,15 +129,16 @@ const [ chosenIngredient, setChosenIngredient ] = useState ("")
 
           
             
-        <div><Fab color="" size="small" aria-label="add" onClick={e => {
+     
+<form className="recipeIngredientForm form-group">
+  <div className="chosenIngredientContainer">
+    <div>
+<em className="chosenIngredient">{ chosenIngredient.ingredientName}</em>    <Fab color="" size="small" aria-label="add" onClick={e => {
           e.preventDefault() 
           handleClickSaveIngredient()}}>
   <AddIcon />
-</Fab>
-</div>
-<form className="recipeIngredientForm form-group">
-      
-      
+</Fab></div>
+
             <fieldset>
         <div className="form-group">
           <label htmlFor="ingredientAmount">amount:</label>
@@ -141,10 +146,12 @@ const [ chosenIngredient, setChosenIngredient ] = useState ("")
       
         </div>
       </fieldset>
+      </div>    
  
 
 <>
-        <br></br><IngredientForm />
+<p className="searchBottom">Don't see what you need? Add a new ingredient below!</p>
+      <div className="ingredientFormContainer">  <IngredientForm /></div>
       </>
     </form>
    

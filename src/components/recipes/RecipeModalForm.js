@@ -73,7 +73,7 @@ export const Example = () => {
   <AddIcon />
 </Fab>
   
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={show} onHide={handleClose} size="lg" centered>
           <Modal.Header closeButton>
             <Modal.Title>New Recipe</Modal.Title>
           </Modal.Header>

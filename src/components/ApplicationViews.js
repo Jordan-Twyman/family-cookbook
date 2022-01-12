@@ -12,7 +12,6 @@ import { RecipeIngredientsProvider } from "./recipeingredients/RecipeIngredients
 import { RecipeIngredientsSearch } from "./recipeingredients/RecipeIngredientsSearch";
 import { MenuList } from "./menu/MenuList";
 import {  MenuProvider } from "./menu/MenuProvider";
-import { MenuCard } from "./menu/MenuCard";
 import { Home } from "./Home";
 
 
@@ -29,13 +28,13 @@ export const ApplicationViews = () => {
         <IngredientProvider>
         <RecipeProvider>
         <Routes>
-            <Route path="/*" element={<><br></br><Home /> <MenuList /> </> } />
+            <Route path="/*" element={<><br></br><Home /><div className="detailsBox"> <div className="recipeDetails MenuList"> <MenuList /> </div> <aside><IngredientList /></aside></div> </> } />
             <Route path ="/recipes/*" element={<><RecipeSearch /><RecipeList /></>}/>
             <Route path ="/recipes/create" element={<RecipeForm />}/>
             <Route path="/recipes/detail/:recipeId/*" element={<div className="detailsBox"> <div className="recipeDetails"> <RecipeDetail /></div><aside> <RecipeIngredientsSearch /></aside></div>} />
             <Route path="recipes/edit/:recipeId/*" element={<RecipeForm />} />
             <Route path="ingredients/edit/:ingredientId/*" element={<IngredientForm />} />            
-            <Route path ="/menu/*" element={ <IngredientList />}/>
+            {/* <Route path ="/menu/*" element={ <IngredientList />}/> */}
         </Routes>
         </RecipeProvider>
         </IngredientProvider>

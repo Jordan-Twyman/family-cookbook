@@ -16,7 +16,7 @@
       margin: 1em;
       padding: 2em;
       color: #264653;
-      border: 1px solid #f4a261;
+      border: 5px solid #f4a261;
       background-color: lightyellow;
       height: 95.7%;
       font-size: large;
@@ -35,6 +35,7 @@
   .ingredientSearch{
       display: flex;
       flex-flow: column nowrap;
+      
   }
  
 
@@ -49,11 +50,20 @@
       }
   
 
-  .recipeIngredient{
+  .recipeIngredient:hover{
       background-color: #264653;
-      color: lightyellow;
+      color: white;
+      opacity: 60%;
+      font-size: 24px;
   }
 
+  .recipeIngredient {
+      background-color: white;
+      font-weight: bold;
+      letter-spacing: 2px;
+      padding:5px
+  }
+ 
   .deleteIngredient {
       border-radius: 50%;
        color: black;
@@ -76,6 +86,7 @@
       display: flex;
       justify-content: center;
       width: auto;
+      margin:25px
   }
 
   .recipeForm{
